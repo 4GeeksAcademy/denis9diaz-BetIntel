@@ -3,55 +3,73 @@
 .auth-container {
     max-width: 400px;
     margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    padding: 40px 20px; 
+    border: 1px solid #e1e1e1; 
+    border-radius: 10px; 
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 .title {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px; 
+    color: #333; 
+    font-size: 24px; 
 }
 
 .input-group {
-    margin-bottom: 20px;
+    margin-bottom: 30px; 
     position: relative; 
 }
 
 .label-form {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px; 
+    color: #555;
+    font-weight: 600; 
 }
 
 .input-form {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    position: relative; 
-}
-
-.password-input-container {
-    position: relative;
+    border-radius: 8px; 
+    background-color: #fff; 
+    font-size: 16px; 
 }
 
 .password-toggle-icon {
     position: absolute;
-    top: 60%; 
-    right: 10px;
-    transform: translateY(-50%);
+    top: 50%;
+    right: 12px;
+    transform: translateY(10%);
     cursor: pointer;
     z-index: 1;
-    margin-right: 5px;
 }
 
 .error-message {
     color: red; 
     text-align: center; 
     margin-top: 10px; 
+    font-size: 14px; 
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff; 
+    color: #fff; 
+    font-size: 18px; 
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+.btn:hover {
+    background-color: #0056b3; 
 }
 
 /* CSS de Navbar*/
