@@ -54,7 +54,7 @@ export const Navbar = () => {
                 <div className="collapse navbar-collapse col-10" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link to="/" className="navbar-brand h1" title="TOPUsers">TOP Users</Link>
+                            <Link to="/newbet" className="navbar-brand h1" title="nuevoPronostico">Nuevo Pronóstico</Link>
                         </li>
                     </ul>
                     <ul className="navbar-nav ms-auto">
@@ -64,8 +64,8 @@ export const Navbar = () => {
                                     {user.username}
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><Link className="dropdown-item" to="/profile">My Profile</Link></li>
-                                    <li><button className="dropdown-item logout" onClick={handleLogout}>Logout</button></li>
+                                    <li><Link className="dropdown-item" to="/profile">Mi perfil</Link></li>
+                                    <li><button className="dropdown-item logout" onClick={handleLogout}>Cerrar sesión</button></li>
                                 </ul>
                             </li>
                         ) : (

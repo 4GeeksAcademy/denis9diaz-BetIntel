@@ -8,6 +8,9 @@ import { Footer } from "./component/footer";
 import { Home } from "./pages/home";
 import Login from "./pages/Login"
 import Register from "./pages/Register"
+import Profile from "./pages/Profile";
+import NewBet from "./pages/NewBet";
+import MyBets from "./pages/MyBets";
 
 import injectContext from "./store/appContext";
 
@@ -22,9 +25,12 @@ const Layout = () => {
                 <ScrollToTop>
                     <Navbar />
                     <Routes>
+                        <Route element={<Home />} path="/" />
                         <Route element={<Register />} path="/register" />
                         <Route element={<Login />} path="/login" />
-                        <Route element={<Home />} path="/" />
+                        <Route element={<Profile />} path="/profile" />
+                        <Route element={<NewBet />} path="/newbet" />
+                        <Route element={<NewBet />} path="/mybets" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

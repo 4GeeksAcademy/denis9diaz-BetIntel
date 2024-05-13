@@ -12,7 +12,7 @@ class User(db.Model):
     photo = db.Column(db.String, unique=False, nullable=True)
 
     def __repr__(self):
-        return f'<User {self.email}>'
+        return "Usuario {}, con email {}".format(self.username, self.email)
     
     def serialize(self):
         return {
@@ -27,6 +27,7 @@ class Apuestas(db.Model):
     __tablename__ = "apuestas"
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_relationship = db.relationship(User)
     event_date = db.Column(db.Date, nullable=False)
     event_name = db.Column(db.String(100), nullable=False)
     prediction = db.Column(db.String(100), nullable=False)
@@ -37,12 +38,13 @@ class Apuestas(db.Model):
     result_units = db.Column(db.Numeric)
 
     def __repr__(self):
-        return f'<Apuestas {self.id}>'
+        return "Apuesta añadida: {}".format (self.prediction)
 
 class EstadisticasUsuario(db.Model):
-    __tablaname__ = "estadisticas"
+    __tablename__ = "estadisticas"
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    user_relationship = db.relationship(User)
     unit_value = db.Column(db.Numeric)
     money_bet = db.Column(db.Numeric)
     money_won = db.Column(db.Numeric)

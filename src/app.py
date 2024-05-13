@@ -131,59 +131,30 @@ def login():
 
 
 @app.route('/api/pronostico', methods=['POST'])
-@jwt_required()  # Se requiere un token JWT para acceder a este endpoint
+@jwt_required()
 def add_pronostico():
-    current_user_email = get_jwt_identity()  # Obtener el email del usuario autenticado
-    user = User.query.filter_by(email=current_user_email).first()  # Buscar el usuario en la base de datos
+    current_user_email = get_jwt_identity()
+    user = User.query.filter_by(email=current_user_email).first()
     if not user:
         return jsonify({'msg': "Usuario no encontrado"}), 404
 
-    # Obtener los datos del pronóstico del cuerpo de la solicitud
     body = request.get_json(silent=True)
     if not body:
         return jsonify({'msg': "Debes enviar información en el cuerpo de la solicitud"}), 400
-    if 'event_date' not in body or 'event_name' not in body or 'prediction' not in body or 'odds' not in body or 'amount_bet' not in body:
+    if 'event_date' not in body or 'event_name' not in body or 'prediction' not in body or 'odds' not in body or 'amount_bet' not in body or 'stake' not in body:
         return jsonify({'msg': "Faltan campos obligatorios en el pronóstico"}), 400
 
-    # Crear un nuevo pronóstico
     pronostico = Apuestas(
         user_id=user.id,
         event_date=body['event_date'],
         event_name=body['event_name'],
         prediction=body['prediction'],
         odds=body['odds'],
-        amount_bet=body['amount_bet']
+        amount_bet=body['amount_bet'],
+        stake=body['stake']
     )
 
-    # Calcular el stake
-    pronostico.stake = pronostico.amount_bet / user.unit_value
-
-    # Calcular el resultado en euros y unidades
-    pronostico.result_amount = pronostico.amount_bet * pronostico.odds
-    pronostico.result_units = pronostico.result_amount / user.unit_value
-
-    # Añadir el pronóstico a la base de datos
     db.session.add(pronostico)
-    db.session.commit()
-
-    # Actualizar las estadísticas del usuario
-    user_stats = EstadisticasUsuario.query.filter_by(user_id=user.id).first()
-    if not user_stats:
-        user_stats = EstadisticasUsuario(user_id=user.id)
-
-    user_stats.total_bets += 1
-    if pronostico.result_amount > pronostico.amount_bet:
-        user_stats.successes += 1
-    elif pronostico.result_amount < pronostico.amount_bet:
-        user_stats.failures += 1
-    else:
-        user_stats.draws += 1
-
-    user_stats.success_rate = (user_stats.successes / user_stats.total_bets) * 100
-    user_stats.average_odds = (user_stats.average_odds * (user_stats.total_bets - 1) + pronostico.odds) / user_stats.total_bets
-    user_stats.average_stake = (user_stats.average_stake * (user_stats.total_bets - 1) + pronostico.stake) / user_stats.total_bets
-
-    db.session.add(user_stats)
     db.session.commit()
 
     return jsonify({'msg': "Pronóstico añadido exitosamente"}), 201

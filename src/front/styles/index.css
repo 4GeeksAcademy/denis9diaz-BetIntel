@@ -78,3 +78,112 @@
 
 /* CSS de Navbar*/
 
+.navbar-custom {
+    background-color: #f8f9fa; 
+    border-bottom: 1px solid #ddd; 
+}
+
+.logo-name-navbar a,
+.navbar-brand.h1 {
+    color: #3f865d; 
+}
+
+.boton-toggler button {
+    background-color: transparent; 
+    border: none; 
+    color: #3f865d; 
+}
+
+.boton-toggler button:hover {
+    background-color: transparent; 
+}
+
+.dropdown-menu {
+    background-color: #f8f9fa; 
+}
+
+.dropdown-menu .dropdown-item {
+    color: #3f865d; 
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #f0f0f0; 
+}
+
+.dropdown-menu .logout {
+    color: #dc3545; 
+}
+
+.dropdown-menu .logout:hover {
+    background-color: #f8d7da; 
+}
+
+.boton-navbar {
+    color: #fff; 
+}
+
+.boton-navbar:hover {
+    opacity: 0.8; 
+}
+
+
+/* CSS de Apuestas*/
+
+.new-bet-container {
+    margin-top: 50px;
+}
+
+.new-bet-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #3f865d; 
+}
+
+.new-bet-form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.new-bet-form {
+    width: 600px; 
+    padding: 20px;
+    border: 2px solid #2ecc71; 
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.form-group {
+    margin-bottom: 20px; 
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #2ecc71; 
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 12px; 
+    font-size: 18px;
+    color: #fff;
+    background-color: #2ecc71;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #27ae60; 
+}
