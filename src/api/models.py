@@ -34,11 +34,12 @@ class Apuestas(db.Model):
     odds = db.Column(db.Numeric)
     amount_bet = db.Column(db.Numeric)
     stake = db.Column(db.Numeric)
+    resultado = db.Column(db.String(20)) 
     result_amount = db.Column(db.Numeric)
     result_units = db.Column(db.Numeric)
 
     def __repr__(self):
-        return "Apuesta añadida: {}".format (self.prediction)
+        return "Apuesta añadida: {}".format(self.prediction)
 
     def serialize(self):
         return {
@@ -49,11 +50,14 @@ class Apuestas(db.Model):
             "odds": self.odds,
             "amount_bet": self.amount_bet,
             "stake": self.stake,
+            "resultado": self.resultado,
+            "result_amount": self.result_amount,
+            "result_units": self.result_units
         }
 
 class EstadisticasUsuario(db.Model):
     __tablename__ = "estadisticas"
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
     user_relationship = db.relationship(User)
     unit_value = db.Column(db.Numeric)
@@ -73,3 +77,23 @@ class EstadisticasUsuario(db.Model):
 
     def __repr__(self):
         return f'<EstadisticasUsuario {self.id}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "unit_value": self.unit_value,
+            "money_bet": self.money_bet,
+            "money_won": self.money_won,
+            "profit": self.profit,
+            "played_units": self.played_units,
+            "profit_units": self.profit_units,
+            "yield_percentage": self.yield_percentage,
+            "total_bets": self.total_bets,
+            "successes": self.successes,
+            "failures": self.failures,
+            "draws": self.draws,
+            "success_rate": self.success_rate,
+            "average_odds": self.average_odds,
+            "average_stake": self.average_stake
+        }
