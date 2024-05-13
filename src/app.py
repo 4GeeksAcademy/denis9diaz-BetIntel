@@ -13,6 +13,7 @@ from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
+import re
 
 # from models import Person
 
@@ -81,12 +82,23 @@ def register():
     body = request.get_json(silent = True)
     if body is None:
         return jsonify({'msg': "Debes enviar información en el body"}), 400
-    if 'email' not in body:
+    if 'email' not in body or body["email"] == "":
         return jsonify({'msg': "El campo email es obligatorio"}), 400
-    if 'username' not in body:
-        return jsonify({'msg': "El campo username es obligatorio"}), 400
+    if not re.match(r'\S+@\S+\.\S+', body['email']):
+        return jsonify({'msg': "Introduce un email válido"}), 400
+    if "username" not in body or body["username"] == "":
+        return jsonify({"msg": "El campo username es obligatorio"}), 400
     if 'password' not in body:
         return jsonify({'msg': "El campo password es obligatorio"}), 400
+
+    user_exist = User.query.filter_by(email=body["email"]).first()
+    username_exist = User.query.filter_by(username=body["username"]).first()
+
+    if user_exist is not None:
+        return jsonify({"msg": "Este email ya esta registrado"}), 400
+    if username_exist is not None:
+        return jsonify({"msg": "Este nombre de usuario ya está registrado"}), 400
+
     new_user = User()
     new_user.email = body['email']
     new_user.username = body['username']

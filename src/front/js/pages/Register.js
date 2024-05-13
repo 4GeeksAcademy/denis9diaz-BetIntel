@@ -25,7 +25,7 @@ const Register = () => {
             return;
         }
         if (!isValidEmail(email)) {
-            setError("Introduce una dirección válida");
+            setError("Introduce un email válida");
             return;
         }
         if (!isValidPassword(password)) {
