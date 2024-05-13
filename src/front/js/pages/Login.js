@@ -60,11 +60,11 @@ const Login = () => {
                         {showPassword ? <FaEyeSlash /> : <FaEye />}
                     </div>
                 </div>
-                <button type="button" className="btn btn-primary" onClick={() => sendLogin(email, password)}>
+                <button type="button" className="btn btn-success" onClick={() => sendLogin(email, password)}>
                     Entrar
                 </button>
                 <p className="mt-3 text-center">
-                    ¿No tienes cuenta? <Link to="/register">Regístrate</Link>
+                    ¿No tienes cuenta? <Link className="link-register" to="/register">Regístrate</Link>
                 </p>
             </div>
         </div>

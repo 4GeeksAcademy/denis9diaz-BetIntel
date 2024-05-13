@@ -54,13 +54,13 @@
     font-size: 14px; 
 }
 
-.btn {
+.btn-success {
     display: block;
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     border: none;
     border-radius: 8px;
-    background-color: #007bff; 
+    background-color: #09ac03; 
     color: #fff; 
     font-size: 18px; 
     text-align: center;
@@ -68,8 +68,12 @@
     transition: background-color 0.3s ease; 
 }
 
-.btn:hover {
-    background-color: #0056b3; 
+.btn-success:hover {
+    background-color: #058501; 
+}
+
+.link-register{
+    color: #0e9709;
 }
 
 /* CSS de Navbar*/

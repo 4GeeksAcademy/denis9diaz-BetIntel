@@ -105,10 +105,10 @@ const Register = () => {
                         </div>
                     </div>
                     {error && <div className="error-message mb-4">{error}</div>}
-                    <button type="submit" className="btn btn-primary">Registro</button>
+                    <button type="submit" className="btn btn-success">Registro</button>
                 </form>
                 <p className="mt-3 text-center">
-                    ¿Ya tienes una cuenta? <a href="/login">Inicia sesión</a>
+                    ¿Ya tienes una cuenta? <a className="link-register" href="/login">Inicia sesión</a>
                 </p>
             </div>
         </div>

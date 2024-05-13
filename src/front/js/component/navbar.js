@@ -71,9 +71,9 @@ export const Navbar = () => {
                         ) : (
                             <li className="nav-item d-flex align-items-center">
                                 <Link to="/register" className="nav-link">
-                                    <button className="btn btn-primary boton-navbar">Create your account</button>
+                                    <button className="btn btn-success boton-navbar">Registro</button>
                                 </Link>
-                                <Link to="/login" className="nav-link btn-link text-primary boton-navbar">Login</Link>
+                                <Link to="/login" className="nav-link btn-link text-success boton-navbar">Iniciar sesión</Link>
                             </li>
                         )}
                     </ul>
