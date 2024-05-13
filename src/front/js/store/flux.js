@@ -12,8 +12,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					title: "SECOND",
 					background: "white",
 					initial: "white"
-				}
-			]
+				},
+			],
+			infoUpdated : false
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -70,6 +71,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error);
 				}
 			},
+			changeInfo: () => {
+				const store = getStore();
+				setStore({infoUpdated: !store.infoUpdated})
+			}
 		}
 	};
 };

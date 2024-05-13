@@ -1,5 +1,4 @@
-
-/* CSS de Formularios*/
+/* CSS de Formularios */
 
 .auth-container {
     max-width: 400px;
@@ -18,6 +17,7 @@
 
 .input-group {
     margin-bottom: 20px;
+    position: relative; 
 }
 
 .label-form {
@@ -31,13 +31,21 @@
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    position: relative; 
 }
 
-.image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh; 
+.password-input-container {
+    position: relative;
+}
+
+.password-toggle-icon {
+    position: absolute;
+    top: 60%; 
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1;
+    margin-right: 5px;
 }
 
 .error-message {
@@ -45,3 +53,6 @@
     text-align: center; 
     margin-top: 10px; 
 }
+
+/* CSS de Navbar*/
+

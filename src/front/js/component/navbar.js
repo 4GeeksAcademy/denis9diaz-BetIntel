@@ -1,30 +1,82 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
     const navigate = useNavigate();
+    const [user, setUser] = useState({ username: null, photo: null });
+    const { store, actions } = useContext(Context);
 
-    const logout = () => {
+    const handleLogout = () => {
         localStorage.removeItem("jwt-token");
+        setUser({ username: null, photo: null });
         navigate("/");
     };
 
+    useEffect(() => {
+        const token = localStorage.getItem("jwt-token");
+        if (token) {
+            const fetchUserData = async () => {
+                try {
+                    const response = await fetch(`${process.env.BACKEND_URL}/api/current-user`, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+                    const data = await response.json();
+                    if (data.username) {
+                        setUser({ username: data.username, photo: data.photo });
+                    } else {
+                        setUser({ username: null, photo: null });
+                    }
+                } catch (error) {
+                    console.error(error);
+                    setUser({ username: null, photo: null });
+                }
+            };
+            fetchUserData();
+        }
+    }, [localStorage.getItem("jwt-token"), store.infoUpdated]);
+
     return (
-        <nav className="navbar navbar-light bg-light">
-            <div className="container">
-                <Link to="/" className="navbar-brand mb-0 h1">HOME</Link>
-                <div className="ml-auto">
-                    <div style={{ display: "inline-block", marginRight: "10px" }}>
-                        <Link to="/register" className="nav-link">Create your account</Link>
-                    </div>
-                    <div style={{ display: "inline-block", marginRight: "10px" }}>
-                        <Link to="/login" className="nav-link">Login</Link>
-                    </div>
-                    <div style={{ display: "inline-block" }}>
-                        <button className="btn btn-link text-danger" onClick={logout}>
-                            Logout
-                        </button>
-                    </div>
+        <nav className="navbar-custom navbar-expand-lg bg-body-tertiary">
+            <div className="container-fluid row">
+                <div className="logo-name-navbar col-1">
+                    <Link to="/">Home</Link>
+                </div>
+                <div className="boton-toggler col-auto ms-auto" style={{ marginRight: '5%' }}>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"><i className="fa-solid fa-bars"></i></span>
+                    </button>
+                </div>
+                <div className="collapse navbar-collapse col-10" id="navbarSupportedContent">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
+                            <Link to="/" className="navbar-brand h1" title="TOPUsers">TOP Users</Link>
+                        </li>
+                    </ul>
+                    <ul className="navbar-nav ms-auto">
+                        {user.username ? (
+                            <li className="nav-item dropdown">
+                                <button className="btn btn-link text-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {user.username}
+                                </button>
+                                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><Link className="dropdown-item" to="/profile">My Profile</Link></li>
+                                    <li><button className="dropdown-item logout" onClick={handleLogout}>Logout</button></li>
+                                </ul>
+                            </li>
+                        ) : (
+                            <li className="nav-item d-flex align-items-center">
+                                <Link to="/register" className="nav-link">
+                                    <button className="btn btn-primary boton-navbar">Create your account</button>
+                                </Link>
+                                <Link to="/login" className="nav-link btn-link text-primary boton-navbar">Login</Link>
+                            </li>
+                        )}
+                    </ul>
                 </div>
             </div>
         </nav>
