@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Swal from "sweetalert2";
 
 const MyBets = () => {
     const [userBets, setUserBets] = useState([]);
@@ -20,11 +19,9 @@ const MyBets = () => {
                 } else {
                     const errorData = await response.json();
                     console.error("Error al obtener las apuestas del usuario:", errorData.msg);
-                    Swal.fire("Error", errorData.msg || "Error al obtener las apuestas del usuario", "error");
                 }
             } catch (error) {
                 console.error("Error en la solicitud fetch:", error);
-                Swal.fire("Error", "Error al obtener las apuestas del usuario", "error");
             }
         };
 

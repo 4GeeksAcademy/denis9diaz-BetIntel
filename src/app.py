@@ -195,6 +195,25 @@ def get_user_bets():
     return jsonify(bets_serialized), 200
 
 
+@app.route('/api/stats/user', methods=['GET'])
+@jwt_required()
+def get_user_stats():
+    current_user_email = get_jwt_identity()
+    user = User.query.filter_by(email=current_user_email).first()
+
+    if not user:
+        return jsonify({'msg': "Usuario no encontrado"}), 404
+
+    bets = Apuestas.query.filter_by(user_id=user.id).all()
+
+    # Calcula las estadísticas aquí
+    stats = calcular_estadisticas(bets)
+
+    # Devuelve las estadísticas junto con las apuestas
+    return jsonify({'bets': [bet.serialize() for bet in bets], 'stats': stats}), 200
+
+
+
 '''-------------------------------------Finish Endpoints---------------------------------'''
 
 # this only runs if `$ python src/main.py` is executed
