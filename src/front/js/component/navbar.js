@@ -53,8 +53,14 @@ export const Navbar = () => {
                 </div>
                 <div className="collapse navbar-collapse col-10" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
+                        <li className="nav-item me-5">
                             <Link to="/newbet" className="navbar-brand h1" title="nuevoPronostico">Nuevo Pronóstico</Link>
+                        </li>
+                        <li className="nav-item me-5">
+                            <Link to="/mybets" className="navbar-brand h1" title="misApuestas">Mis Apuestas</Link>
+                        </li>
+                        <li className="nav-item me-5">
+                            <Link to="/stats" className="navbar-brand h1" title="stats">Estadísticas</Link>
                         </li>
                     </ul>
                     <ul className="navbar-nav ms-auto">

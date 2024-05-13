@@ -127,7 +127,7 @@
 }
 
 
-/* CSS de Apuestas*/
+/* CSS de NewBet*/
 
 .new-bet-container {
     margin-top: 50px;
@@ -187,3 +187,30 @@
 .submit-button:hover {
     background-color: #27ae60; 
 }
+
+/* CSS de MyBets*/
+
+.my-bet-container {
+    margin-top: 50px;
+}
+
+.my-bet-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #3f865d; 
+}
+
+/* CSS de Stats*/
+
+.stats-container {
+    margin-top: 50px;
+}
+
+.stats-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #3f865d; 
+}
+

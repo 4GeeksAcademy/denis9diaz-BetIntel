@@ -55,8 +55,9 @@ const NewBet = () => {
                     stake: "" 
                 });
                 console.log('Apuesta agregada exitosamente');
-                Swal.fire("¡Apuesta registrada!", "La apuesta se ha registrado satisfactoriamente", "success"); 
-                navigate("/mybets"); 
+                Swal.fire("¡Apuesta registrada!", "La apuesta se ha registrado satisfactoriamente", "success").then(() => {
+                    navigate("/mybets"); 
+                });
             } else {
                 const errorData = await response.json();
                 console.error("Error al agregar la apuesta:", errorData.message);
@@ -64,14 +65,14 @@ const NewBet = () => {
             }
         } catch (error) {
             console.error("Error en la solicitud fetch:", error);
-            Swal.fire("Error", "Error al registrar la apuesta", "error");
+            Swal.fire("Error", "Error al registrar la apuesta", "error").then(() => {
+            });
         }
-    };
+    };    
 
     return (
         <div className="new-bet-container">
             <h1 className="new-bet-title">Añadir nuevo pronóstico</h1>
-
             <div className="new-bet-form-container">
                 <form onSubmit={handleSubmit} className="new-bet-form">
                     <div className="form-group">

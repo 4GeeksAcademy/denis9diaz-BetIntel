@@ -11,6 +11,7 @@ import Register from "./pages/Register"
 import Profile from "./pages/Profile";
 import NewBet from "./pages/NewBet";
 import MyBets from "./pages/MyBets";
+import Stats from "./pages/Stats";
 
 import injectContext from "./store/appContext";
 
@@ -30,7 +31,8 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<Profile />} path="/profile" />
                         <Route element={<NewBet />} path="/newbet" />
-                        <Route element={<NewBet />} path="/mybets" />
+                        <Route element={<MyBets />} path="/mybets" />
+                        <Route element={<Stats />} path="/stats" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
