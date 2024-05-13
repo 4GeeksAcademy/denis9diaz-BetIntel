@@ -89,14 +89,18 @@ def calcular_estadisticas(apuestas):
     profit = money_won - money_bet
     played_units = sum(apuesta.stake for apuesta in apuestas_con_resultado)
     yield_percentage = (profit / money_bet) * 100 if money_bet != 0 else None
-    total_bets = len(apuestas)
+    total_bets = len(apuestas_con_resultado)
     
-    average_odds = sum(apuesta.odds for apuesta in apuestas_con_resultado) / len(apuestas_con_resultado)
+    average_odds = sum(apuesta.odds for apuesta in apuestas_con_resultado) / total_bets
     average_stake = played_units / total_bets if total_bets != 0 else None
 
-    ganadas = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'ganada')
-    falladas = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'perdida')
-    nulas = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'nula')
+    # Contar el número de apuestas ganadas, falladas y nulas
+    wins = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'ganada')
+    losses = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'perdida')
+    draws = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'nula')
+
+    # Calcular el número de apuestas acertadas y el porcentaje de acierto
+    success_rate = (wins / total_bets) * 100 if total_bets != 0 else None
 
     return {
         "money_bet": money_bet,
@@ -106,11 +110,12 @@ def calcular_estadisticas(apuestas):
         "profit_units": profit_units,
         "yield_percentage": yield_percentage,
         "total_bets": total_bets,
+        "wins": wins,
+        "losses": losses,
+        "draws": draws,
+        "success_rate": success_rate,
         "average_odds": average_odds,
-        "average_stake": average_stake,
-        "ganadas": ganadas,
-        "falladas": falladas,
-        "nulas": nulas
+        "average_stake": average_stake
     }
 
 
@@ -273,6 +278,10 @@ def get_user_stats():
         profit_units=stats["profit_units"],
         yield_percentage=stats["yield_percentage"],
         total_bets=stats["total_bets"],
+        wins=stats["wins"],
+        losses=stats["losses"],
+        draws=stats["draws"],
+        success_rate=stats["success_rate"],
         average_odds=stats["average_odds"],
         average_stake=stats["average_stake"]
     )
@@ -283,9 +292,8 @@ def get_user_stats():
     return jsonify({'bets': [bet.serialize() for bet in bets], 'stats': stats}), 200
 
 
-
-
 '''-------------------------------------Finish Endpoints---------------------------------'''
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':

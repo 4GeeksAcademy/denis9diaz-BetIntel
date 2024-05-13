@@ -58,7 +58,7 @@ class Apuestas(db.Model):
 class EstadisticasUsuario(db.Model):
     __tablename__ = "estadisticas"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     user_relationship = db.relationship(User)
     unit_value = db.Column(db.Numeric)
     money_bet = db.Column(db.Numeric)
@@ -68,8 +68,8 @@ class EstadisticasUsuario(db.Model):
     profit_units = db.Column(db.Numeric)
     yield_percentage = db.Column(db.Numeric)
     total_bets = db.Column(db.Integer)
-    successes = db.Column(db.Integer)
-    failures = db.Column(db.Integer)
+    wins = db.Column(db.Integer)
+    losses = db.Column(db.Integer)
     draws = db.Column(db.Integer)
     success_rate = db.Column(db.Numeric)
     average_odds = db.Column(db.Numeric)
@@ -90,8 +90,8 @@ class EstadisticasUsuario(db.Model):
             "profit_units": self.profit_units,
             "yield_percentage": self.yield_percentage,
             "total_bets": self.total_bets,
-            "successes": self.successes,
-            "failures": self.failures,
+            "wins": self.wins,
+            "losses": self.losses,
             "draws": self.draws,
             "success_rate": self.success_rate,
             "average_odds": self.average_odds,

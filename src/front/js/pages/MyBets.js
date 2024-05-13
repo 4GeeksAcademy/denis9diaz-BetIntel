@@ -39,6 +39,9 @@ const MyBets = () => {
                         <th>Cuota</th>
                         <th>Cantidad Apostada</th>
                         <th>Stake</th>
+                        <th>Resultado</th>
+                        <th>Dinero Obtenido</th>
+                        <th>Unidades</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,9 +49,12 @@ const MyBets = () => {
                         <tr key={bet.id}>
                             <td>{bet.event_name}</td>
                             <td>{bet.prediction}</td>
-                            <td>{bet.odds}</td>
-                            <td>{bet.amount_bet}€</td>
+                            <td>{parseFloat(bet.odds).toFixed(2)}</td>
+                            <td>{parseFloat(bet.amount_bet).toFixed(2)}€</td>
                             <td>{bet.stake}</td>
+                            <td>{bet.resultado || ''}</td>
+                            <td>{parseFloat(bet.result_amount).toFixed(2) || ''}€</td>
+                            <td>{parseFloat(bet.result_units).toFixed(2) || ''}</td>
                         </tr>
                     ))}
                 </tbody>
