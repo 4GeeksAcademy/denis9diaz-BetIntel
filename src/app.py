@@ -1,15 +1,19 @@
-"""
-This module takes care of starting the API Server, Loading the DB and Adding the endpoints
-"""
 import os
 from flask import Flask, request, jsonify, url_for, send_from_directory
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from api.utils import APIException, generate_sitemap
-from api.models import db
+from api.models import db, User, EstadisticasUsuario, Apuestas
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended import JWTManager
+from flask_bcrypt import Bcrypt
+from flask_cors import CORS
+import re
 
 # from models import Person
 
@@ -17,6 +21,10 @@ ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(
     os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
+CORS(app)
+app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+bcrypt = Bcrypt(app)
+jwt = JWTManager(app)
 app.url_map.strict_slashes = False
 
 # database condiguration
@@ -67,6 +75,127 @@ def serve_any_other_file(path):
     response.cache_control.max_age = 0  # avoid cache memory
     return response
 
+'''------------------------------------ENDPOINTS----------------------------------'''
+
+@app.route('/api/register', methods=['POST'])
+def register():
+    body = request.get_json(silent = True)
+    if body is None:
+        return jsonify({'msg': "Debes enviar información en el body"}), 400
+    if 'email' not in body or body["email"] == "":
+        return jsonify({'msg': "El campo email es obligatorio"}), 400
+    if not re.match(r'\S+@\S+\.\S+', body['email']):
+        return jsonify({'msg': "Introduce un email válido"}), 400
+    if "username" not in body or body["username"] == "":
+        return jsonify({"msg": "El campo username es obligatorio"}), 400
+    if 'password' not in body:
+        return jsonify({'msg': "El campo password es obligatorio"}), 400
+
+    user_exist = User.query.filter_by(email=body["email"]).first()
+    username_exist = User.query.filter_by(username=body["username"]).first()
+
+    if user_exist is not None:
+        return jsonify({"msg": "Este email ya esta registrado"}), 400
+    if username_exist is not None:
+        return jsonify({"msg": "Este nombre de usuario ya está registrado"}), 400
+
+    new_user = User()
+    new_user.email = body['email']
+    new_user.username = body['username']
+    pw_hash = bcrypt.generate_password_hash(body["password"]).decode("utf-8")
+    new_user.password = pw_hash
+    new_user.is_active = True
+    db.session.add (new_user)
+    db.session.commit()
+    return jsonify({"msg": "El usuario ha sido creado con exito"}), 201
+
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    body = request.get_json(silent = True)
+    if body is None:
+        return jsonify({'msg': "Debes enviar información en el body"}), 400
+    if 'email' not in body:
+        return jsonify({'msg': "El campo email es obligatorio"}), 400
+    if 'password' not in body:
+        return jsonify({'msg': "El campo password es obligatorio"}), 400
+    user = User.query.filter_by(email= body["email"]).first()
+    if user is None:
+        return jsonify({'msg': "El usuario no existe"}), 400
+    password_correct = bcrypt.check_password_hash(user.password, body["password"])
+    if not password_correct:
+        return jsonify({'msg': "La contraseña es incorrecta"}), 400
+    access_token = create_access_token(identity=user.email)
+    return jsonify({'msg': "Login aceptado",
+                    'token': access_token})
+
+
+@app.route('/api/pronostico', methods=['POST'])
+@jwt_required()
+def add_pronostico():
+    current_user_email = get_jwt_identity()
+    user = User.query.filter_by(email=current_user_email).first()
+    if not user:
+        return jsonify({'msg': "Usuario no encontrado"}), 404
+
+    body = request.get_json(silent=True)
+    if not body:
+        return jsonify({'msg': "Debes enviar información en el cuerpo de la solicitud"}), 400
+    if 'event_date' not in body or 'event_name' not in body or 'prediction' not in body or 'odds' not in body or 'amount_bet' not in body or 'stake' not in body:
+        return jsonify({'msg': "Faltan campos obligatorios en el pronóstico"}), 400
+
+    pronostico = Apuestas(
+        user_id=user.id,
+        event_date=body['event_date'],
+        event_name=body['event_name'],
+        prediction=body['prediction'],
+        odds=body['odds'],
+        amount_bet=body['amount_bet'],
+        stake=body['stake']
+    )
+
+    db.session.add(pronostico)
+    db.session.commit()
+
+    return jsonify({'msg': "Pronóstico añadido exitosamente"}), 201
+
+
+@app.route('/api/protected', methods=['GET'])
+@jwt_required()
+def protected():
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200
+
+
+@app.route('/api/current-user', methods=['GET'])
+@jwt_required()
+def get_current_user():
+    current_user_email = get_jwt_identity()
+    user = User.query.filter_by(email=current_user_email).first()
+    print(user.id)
+    if user:
+        return jsonify(user.serialize()), 200
+    else:
+        return jsonify({"msg": "Usuario no encontrado"}), 404
+
+
+@app.route('/api/bets/user', methods=['GET'])
+@jwt_required()
+def get_user_bets():
+    current_user_email = get_jwt_identity()
+    user = User.query.filter_by(email=current_user_email).first()
+
+    if not user:
+        return jsonify({'msg': "Usuario no encontrado"}), 404
+
+    bets = Apuestas.query.filter_by(user_id=user.id).all()
+
+    bets_serialized = [bet.serialize() for bet in bets]
+
+    return jsonify(bets_serialized), 200
+
+
+'''-------------------------------------Finish Endpoints---------------------------------'''
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
