@@ -40,6 +40,17 @@ class Apuestas(db.Model):
     def __repr__(self):
         return "Apuesta añadida: {}".format (self.prediction)
 
+    def serialize(self):
+        return {
+            "id": self.id,
+            "event_date": self.event_date,
+            "event_name": self.event_name,
+            "prediction": self.prediction,
+            "odds": self.odds,
+            "amount_bet": self.amount_bet,
+            "stake": self.stake,
+        }
+
 class EstadisticasUsuario(db.Model):
     __tablename__ = "estadisticas"
     id = db.Column(db.Integer, primary_key=True)

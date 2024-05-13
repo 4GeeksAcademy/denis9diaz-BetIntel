@@ -192,13 +192,47 @@
 
 .my-bet-container {
     margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
 }
 
 .my-bet-title {
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
-    color: #3f865d; 
+    color: #3f865d;
+}
+
+.my-bet-table-container {
+    width: 90%;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.my-bet-table {
+    width: 90%;
+    border-collapse: collapse;
+    border-radius: 15px !important;
+}
+
+.my-bet-table th,
+.my-bet-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.my-bet-table th {
+    background-color: #3f865d;
+    color: #fff;
+}
+
+.my-bet-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.my-bet-table tbody tr:hover {
+    background-color: #ddd;
 }
 
 /* CSS de Stats*/

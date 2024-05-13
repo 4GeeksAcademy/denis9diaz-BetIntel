@@ -179,6 +179,22 @@ def get_current_user():
         return jsonify({"msg": "Usuario no encontrado"}), 404
 
 
+@app.route('/api/bets/user', methods=['GET'])
+@jwt_required()
+def get_user_bets():
+    current_user_email = get_jwt_identity()
+    user = User.query.filter_by(email=current_user_email).first()
+
+    if not user:
+        return jsonify({'msg': "Usuario no encontrado"}), 404
+
+    bets = Apuestas.query.filter_by(user_id=user.id).all()
+
+    bets_serialized = [bet.serialize() for bet in bets]
+
+    return jsonify(bets_serialized), 200
+
+
 '''-------------------------------------Finish Endpoints---------------------------------'''
 
 # this only runs if `$ python src/main.py` is executed
