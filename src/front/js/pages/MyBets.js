@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Swal from "sweetalert2";
 
 const MyBets = () => {
     const [userBets, setUserBets] = useState([]);
@@ -20,11 +19,9 @@ const MyBets = () => {
                 } else {
                     const errorData = await response.json();
                     console.error("Error al obtener las apuestas del usuario:", errorData.msg);
-                    Swal.fire("Error", errorData.msg || "Error al obtener las apuestas del usuario", "error");
                 }
             } catch (error) {
                 console.error("Error en la solicitud fetch:", error);
-                Swal.fire("Error", "Error al obtener las apuestas del usuario", "error");
             }
         };
 
@@ -42,6 +39,9 @@ const MyBets = () => {
                         <th>Cuota</th>
                         <th>Cantidad Apostada</th>
                         <th>Stake</th>
+                        <th>Resultado</th>
+                        <th>Dinero Obtenido</th>
+                        <th>Unidades</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,9 +49,12 @@ const MyBets = () => {
                         <tr key={bet.id}>
                             <td>{bet.event_name}</td>
                             <td>{bet.prediction}</td>
-                            <td>{bet.odds}</td>
-                            <td>{bet.amount_bet}€</td>
+                            <td>{parseFloat(bet.odds).toFixed(2)}</td>
+                            <td>{parseFloat(bet.amount_bet).toFixed(2)}€</td>
                             <td>{bet.stake}</td>
+                            <td>{bet.resultado || 'Pendiente'}</td>
+                            <td>{isNaN(parseFloat(bet.result_amount)) ? 'Pendiente' : parseFloat(bet.result_amount).toFixed(2) + '€'}</td>
+                            <td>{isNaN(parseFloat(bet.result_units)) ? 'Pendiente' : parseFloat(bet.result_units).toFixed(2)}</td>
                         </tr>
                     ))}
                 </tbody>

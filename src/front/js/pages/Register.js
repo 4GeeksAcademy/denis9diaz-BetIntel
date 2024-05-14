@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const Register = () => {
     const [email, setEmail] = useState("");
@@ -10,28 +11,35 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showRepeatPassword, setShowRepeatPassword] = useState(false);
     const [error, setError] = useState("");
+
     const navigate = useNavigate();
 
     const isValidEmail = (email) => {
         return /\S+@\S+\.\S+/.test(email);
     };
+
     const isValidPassword = (password) => {
         return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(password);
     };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (password !== repeatPassword) {
             setError("Las contraseñas no coinciden");
             return;
         }
+
         if (!isValidEmail(email)) {
-            setError("Introduce un email válida");
+            setError("Introduce un email válido");
             return;
         }
+
         if (!isValidPassword(password)) {
             setError("La contraseña debe contener al menos una mayúscula, una minúscula, un número y 8 caracteres");
             return;
         }
+
         const resp = await fetch(process.env.BACKEND_URL + "/api/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -39,14 +47,22 @@ const Register = () => {
         });
 
         const data = await resp.json();
-        console.log(data)
-        if (resp.status == 400) {
-            setError(data.msg)
+
+        if (resp.status === 400) {
+            setError(data.msg);
+        } else if (resp.status === 201) {
+            setError("");
+            Swal.fire({
+                title: '¡Registro exitoso!',
+                text: 'Serás redirigido al inicio de sesión.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate("/login");
+                }
+            });
         }
-        if (resp.status == 201) {
-            navigate("/login")
-        }
-        return data;
     };
 
     return (
@@ -54,6 +70,7 @@ const Register = () => {
             <div className="container form-body">
                 <h1 className="title">Crear cuenta</h1>
                 <form onSubmit={handleSubmit} className="form-register">
+                    {/* Formulario */}
                     <div className="input-group">
                         <label className="label-form" htmlFor="email">Email</label>
                         <input

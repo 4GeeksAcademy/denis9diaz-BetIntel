@@ -75,6 +75,48 @@ def serve_any_other_file(path):
     response.cache_control.max_age = 0  # avoid cache memory
     return response
 
+
+def calcular_estadisticas(apuestas): 
+    apuestas_con_resultado = [apuesta for apuesta in apuestas if apuesta.resultado is not None and apuesta.odds is not None]
+
+    if not apuestas_con_resultado:
+        return None
+
+    money_bet = sum(apuesta.amount_bet for apuesta in apuestas_con_resultado)
+    money_won = sum(apuesta.result_amount for apuesta in apuestas_con_resultado if apuesta.resultado == 'Ganada')
+    profit_units = sum(apuesta.result_units for apuesta in apuestas_con_resultado if apuesta.result_units is not None)
+    
+    profit = money_won - money_bet
+    played_units = sum(apuesta.stake for apuesta in apuestas_con_resultado)
+    yield_percentage = (profit / money_bet) * 100 if money_bet != 0 else None
+    total_bets = len(apuestas_con_resultado)
+    
+    average_odds = sum(apuesta.odds for apuesta in apuestas_con_resultado) / total_bets
+    average_stake = played_units / total_bets if total_bets != 0 else None
+
+    wins = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'Ganada')
+    losses = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'Perdida')
+    draws = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'Nula')
+
+    success_rate = (wins / total_bets) * 100 if total_bets != 0 else None
+
+    return {
+        "money_bet": money_bet,
+        "money_won": money_won,
+        "profit": profit,
+        "played_units": played_units,
+        "profit_units": profit_units,
+        "yield_percentage": yield_percentage,
+        "total_bets": total_bets,
+        "wins": wins,
+        "losses": losses,
+        "draws": draws,
+        "success_rate": success_rate,
+        "average_odds": average_odds,
+        "average_stake": average_stake
+    }
+
+
 '''------------------------------------ENDPOINTS----------------------------------'''
 
 @app.route('/api/register', methods=['POST'])
@@ -154,6 +196,21 @@ def add_pronostico():
         stake=body['stake']
     )
 
+    if 'resultado' not in body:
+        db.session.add(pronostico)
+        db.session.commit()
+        return jsonify({'msg': "Pronóstico añadido exitosamente"}), 201
+
+    if body['resultado'] == 'ganada':
+        pronostico.result_amount = body['amount_bet'] * body['odds']
+        pronostico.result_units = body['odds'] * body['stake'] - body['stake']
+    elif body['resultado'] == 'perdida':
+        pronostico.result_amount = -1 * body['amount_bet']  
+        pronostico.result_units = -1 * body['stake']  
+    else:
+        pronostico.result_amount = 0
+        pronostico.result_units = 0
+
     db.session.add(pronostico)
     db.session.commit()
 
@@ -195,7 +252,43 @@ def get_user_bets():
     return jsonify(bets_serialized), 200
 
 
+@app.route('/api/stats/user', methods=['GET'])
+@jwt_required()
+def get_user_stats():
+    current_user_email = get_jwt_identity()
+    user = User.query.filter_by(email=current_user_email).first()
+
+    if not user:
+        return jsonify({'msg': "Usuario no encontrado"}), 404
+
+    bets = Apuestas.query.filter_by(user_id=user.id).all()
+
+    stats = calcular_estadisticas(bets)
+
+    user_stats = EstadisticasUsuario(
+        user_id=user.id,
+        money_bet=stats["money_bet"],
+        money_won=stats["money_won"],
+        profit=stats["profit"],
+        played_units=stats["played_units"],
+        profit_units=stats["profit_units"],
+        yield_percentage=stats["yield_percentage"],
+        total_bets=stats["total_bets"],
+        wins=stats["wins"],
+        losses=stats["losses"],
+        draws=stats["draws"],
+        success_rate=stats["success_rate"],
+        average_odds=stats["average_odds"],
+        average_stake=stats["average_stake"]
+    )
+    db.session.add(user_stats)
+    db.session.commit()
+
+    return jsonify({'bets': [bet.serialize() for bet in bets], 'stats': stats}), 200
+
+
 '''-------------------------------------Finish Endpoints---------------------------------'''
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
