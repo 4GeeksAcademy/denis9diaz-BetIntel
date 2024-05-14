@@ -22,7 +22,7 @@
     padding: 40px 20px; 
     border: 1px solid #e1e1e1; 
     border-radius: 10px; 
-    background-color: #f9f9f9;
+    background-color: #e6e6e6;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-top: 80px;
     font-family: 'Exo 2', sans-serif;
@@ -171,7 +171,7 @@
     padding: 20px;
     border: 2px solid #3f865d; 
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #e6e6e6;
 }
 
 .form-group {
@@ -225,7 +225,7 @@
     text-align: center;
     font-size: 28px;
     margin-bottom: 40px;
-    color: #3f865d;
+    color: #3f865d !important;
 }
 
 .my-bet-table-container {
@@ -246,26 +246,52 @@
 .my-bet-table td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid #ddd; 
+    border-bottom: 1px solid #acacac; 
     border-right: 1px solid #ddd; 
+    border-left: 1px solid #ddd; 
+    border-radius: 5px; 
 }
 
 .my-bet-table th {
     background-color: #3f865d;
     color: #fff;
+    font-weight: lighter;
 }
 
 .my-bet-table tbody tr:nth-child(even) {
-    background-color: #e9e9e9;
+    background: linear-gradient(315deg, #ebebebce, #ffffffd5) !important;
 }
 
 .my-bet-table tbody tr:nth-child(odd) {
-    background-color: #f8f8f8;
+    background-color: #e9e9e9;
 }
 
 .my-bet-table tbody tr:hover {
     background-color: #ddd;
 }
+
+.my-bet-table tbody tr:not(.won):not(.lost):not(.void) td {
+    background: linear-gradient(315deg, #ebebeb, #fff);
+}
+
+.won,
+.lost,
+.void {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.won {
+    background: linear-gradient(315deg, #a1db5d, #c5f88b) !important;
+}
+
+.lost {
+    background: linear-gradient(315deg, #fd776d, #fd918a) !important;
+}
+
+.void {
+    background: linear-gradient(315deg, #73bffd, #afd8fa) !important;
+}
+
 
 /* CSS de Stats*/
 
@@ -290,26 +316,29 @@
 .stats-details {
     display: flex;
     flex-wrap: wrap; 
-    justify-content: space-between;
+    justify-content: space-around;
     max-width: 100%;
 }
 
 .table {
-    width: 45%; 
+    width: 35%; 
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-    background-color: #f7f7f7;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #f7f7f7, #d6d6d6); 
     margin-bottom: 40px; 
 }
 
 .h2-stats {
-    background-color: #3f865d;
+    background: linear-gradient(135deg, #62bd88, #3f865d);
     color: white;
     font-size: 20px;
-    padding: 10px;
+    padding: 15px; 
     margin: 0;
     text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .table-stats {
@@ -319,13 +348,13 @@
 }
 
 .tr-stats {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ffffff;
 }
 
 .td-stats {
-    padding: 10px;
+    padding: 15px;
     text-align: left;
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #ffffff;
 }
 
 /* CSS de Profile*/

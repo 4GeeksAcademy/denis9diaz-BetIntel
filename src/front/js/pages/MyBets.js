@@ -28,12 +28,33 @@ const MyBets = () => {
         fetchUserBets();
     }, []);
 
+    const getResultClass = (resultado) => {
+        switch (resultado) {
+            case 'Ganada':
+                return 'won';
+            case 'Perdida':
+                return 'lost';
+            case 'Nula':
+                return 'void';
+            default:
+                return '';
+        }
+    };
+
+    const formatDate = (dateString) => {
+        const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+        return new Date(dateString).toLocaleDateString('es-ES', options);
+    };
+
+    const sortedBets = [...userBets].sort((a, b) => new Date(a.event_date) - new Date(b.event_date));
+
     return (
         <div className="my-bet-container">
             <h1 className="my-bet-title">Mis Apuestas</h1>
             <table className="my-bet-table">
                 <thead>
                     <tr>
+                        <th>Fecha</th>
                         <th>Evento</th>
                         <th>Predicción</th>
                         <th>Cuota</th>
@@ -45,22 +66,24 @@ const MyBets = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {userBets.map(bet => (
+                    {sortedBets.map(bet => (
                         <tr key={bet.id}>
+                            <td>{formatDate(bet.event_date)}</td>
                             <td>{bet.event_name}</td>
                             <td>{bet.prediction}</td>
                             <td>{parseFloat(bet.odds).toFixed(2)}</td>
                             <td>{parseFloat(bet.amount_bet).toFixed(2)}€</td>
                             <td>{bet.stake}</td>
-                            <td>{bet.resultado || 'Pendiente'}</td>
-                            <td>{isNaN(parseFloat(bet.result_amount)) ? 'Pendiente' : parseFloat(bet.result_amount).toFixed(2) + '€'}</td>
-                            <td>{isNaN(parseFloat(bet.result_units)) ? 'Pendiente' : parseFloat(bet.result_units).toFixed(2)}</td>
+                            <td className={getResultClass(bet.resultado)}>{bet.resultado || 'Pendiente'}</td>
+                            <td className={getResultClass(bet.resultado)}>{isNaN(parseFloat(bet.result_amount)) ? 'Pendiente' : parseFloat(bet.result_amount).toFixed(2) + '€'}</td>
+                            <td className={getResultClass(bet.resultado)}>{isNaN(parseFloat(bet.result_units)) ? 'Pendiente' : parseFloat(bet.result_units).toFixed(2)}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
         </div>
     );
+    
 }
 
 export default MyBets;
