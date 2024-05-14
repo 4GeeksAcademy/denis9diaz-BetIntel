@@ -93,6 +93,7 @@ def calcular_estadisticas(apuestas):
     
     average_odds = sum(apuesta.odds for apuesta in apuestas_con_resultado) / total_bets
     average_stake = played_units / total_bets if total_bets != 0 else None
+    unit_value = money_bet / played_units if played_units != 0 else None
 
     wins = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'Ganada')
     losses = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'Perdida')
@@ -113,11 +114,13 @@ def calcular_estadisticas(apuestas):
         "draws": draws,
         "success_rate": success_rate,
         "average_odds": average_odds,
-        "average_stake": average_stake
+        "average_stake": average_stake,
+        "unit_value": unit_value
     }
 
 
 '''------------------------------------ENDPOINTS----------------------------------'''
+
 
 @app.route('/api/register', methods=['POST'])
 def register():
