@@ -99,18 +99,20 @@
     background-color: #2d6a47;
 }
 
-.home-introduction .what-item,
-.home-introduction .how-list-item,
-.home-introduction .sub-stats-item {
-    margin-left: 5px;
-    margin-top: 5px;
-}
-
 .home-introduction .icon,
 .home-introduction .sub-icon {
+    width: 15px;
     margin-right: 5px;
     margin-top: 5px;
 }
+
+.what-item,
+.how-list-item,
+.sub-stats-item {
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
 
 @media (min-width: 768px) {
     .home-container {
@@ -208,11 +210,24 @@
     background-color: #f8f9fa; 
     border-bottom: 1px solid #ddd;
     font-family: 'Exo 2', sans-serif;
+    height: auto;
+    padding: 8px;
+    align-items: center;
 }
 
 .logo-name-navbar a,
 .navbar-brand.h1 {
     color: #3f865d; 
+}
+
+.navbar-brand{
+    font-size: 25px;
+}
+
+.icono-nav{
+    height: 40px;
+    width: 40px;
+    margin-right: 6px;
 }
 
 .boton-toggler button {
