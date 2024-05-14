@@ -1,4 +1,19 @@
 
+/* CSS de Home */
+
+.home-container {
+    margin-top: 50px;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.home-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 40px;
+    color: #3f865d;
+    font-family: 'Exo 2', sans-serif;
+}
+
 /* CSS de Formularios */
 
 .auth-container {
@@ -9,7 +24,8 @@
     border-radius: 10px; 
     background-color: #f9f9f9;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 80px; 
+    margin-top: 80px;
+    font-family: 'Exo 2', sans-serif;
 }
 
 .title {
@@ -82,7 +98,8 @@
 
 .navbar-custom {
     background-color: #f8f9fa; 
-    border-bottom: 1px solid #ddd; 
+    border-bottom: 1px solid #ddd;
+    font-family: 'Exo 2', sans-serif;
 }
 
 .logo-name-navbar a,
@@ -133,11 +150,12 @@
 
 .new-bet-container {
     margin-top: 50px;
+    font-family: 'Exo 2', sans-serif;
 }
 
 .new-bet-title {
     text-align: center;
-    font-size: 24px;
+    font-size: 28px;
     margin-bottom: 40px;
     color: #3f865d; 
 }
@@ -145,6 +163,7 @@
 .new-bet-form-container {
     display: flex;
     justify-content: center;
+    font-size: 20px;
 }
 
 .new-bet-form {
@@ -173,6 +192,8 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    margin-top: 7px;
+    margin-bottom: 5px;
 }
 
 .submit-button {
@@ -196,12 +217,13 @@
     margin-top: 50px;
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
+    font-family: 'Exo 2', sans-serif;
 }
 
 .my-bet-title {
     text-align: center;
-    font-size: 24px;
+    font-size: 28px;
     margin-bottom: 40px;
     color: #3f865d;
 }
@@ -255,11 +277,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: 'Exo 2', sans-serif;
 }
 
 .stats-title {
     text-align: center;
-    font-size: 24px;
+    font-size: 28px;
     margin-bottom: 40px;
     color: #3f865d; 
 }
@@ -283,7 +306,7 @@
 .h2-stats {
     background-color: #3f865d;
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     padding: 10px;
     margin: 0;
     text-align: center;
@@ -292,6 +315,7 @@
 .table-stats {
     width: 100%;
     border-collapse: collapse;
+    font-size: 20px;
 }
 
 .tr-stats {
@@ -308,11 +332,12 @@
 
 .profile-container {
     margin-top: 50px;
+    font-family: 'Exo 2', sans-serif;
 }
 
 .profile-title {
     text-align: center;
-    font-size: 24px;
+    font-size: 28px;
     margin-bottom: 40px;
     color: #3f865d; 
 }

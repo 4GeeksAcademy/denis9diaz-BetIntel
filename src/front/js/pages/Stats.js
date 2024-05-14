@@ -37,11 +37,11 @@ const Stats = () => {
                         <table className="table-stats">
                             <tbody>
                                 <tr className="tr-stats">
-                                    <td className="td-stats">Unidades de beneficio:</td>
+                                    <td className="td-stats">Unidades de beneficio</td>
                                     <td className="td-stats">{stats.profit_units ? parseFloat(stats.profit_units).toFixed(2) : ''}</td>
                                 </tr>
                                 <tr className="tr-stats">
-                                    <td className="td-stats">% de Yield:</td>
+                                    <td className="td-stats">Yield</td>
                                     <td className="td-stats">{stats.yield_percentage ? parseFloat(stats.yield_percentage).toFixed(2) : ''}%</td>
                                 </tr>
                             </tbody>
@@ -52,15 +52,15 @@ const Stats = () => {
                         <table className="table-stats">
                             <tbody>
                                 <tr className="tr-stats">
-                                    <td className="td-stats">Dinero apostado:</td>
+                                    <td className="td-stats">Dinero apostado</td>
                                     <td className="td-stats">{stats.money_bet ? parseFloat(stats.money_bet).toFixed(2) : ''}€</td>
                                 </tr>
                                 <tr className="tr-stats">
-                                    <td className="td-stats">Dinero obtenido:</td>
+                                    <td className="td-stats">Dinero obtenido</td>
                                     <td className="td-stats">{stats.money_won ? parseFloat(stats.money_won).toFixed(2) : ''}€</td>
                                 </tr>
                                 <tr className="tr-stats">
-                                    <td className="td-stats">Beneficio:</td>
+                                    <td className="td-stats">Beneficio</td>
                                     <td className="td-stats">{stats.profit ? parseFloat(stats.profit).toFixed(2) : ''}€</td>
                                 </tr>
                             </tbody>
@@ -71,23 +71,23 @@ const Stats = () => {
                         <table className="table-stats">
                             <tbody>
                                 <tr className="tr-stats">
-                                    <td className="td-stats">Total de apuestas:</td>
+                                    <td className="td-stats">Total de apuestas</td>
                                     <td className="td-stats">{stats.total_bets}</td>
                                 </tr>
                                 <tr className="tr-stats">
-                                    <td className="td-stats">Apuestas ganadas:</td>
+                                    <td className="td-stats">Apuestas ganadas</td>
                                     <td className="td-stats">{stats.wins}</td>
                                 </tr>
                                 <tr className="tr-stats">
-                                    <td className="td-stats">Apuestas falladas:</td>
+                                    <td className="td-stats">Apuestas falladas</td>
                                     <td className="td-stats">{stats.losses}</td>
                                 </tr>
                                 <tr className="tr-stats">
-                                    <td className="td-stats">Apuestas nulas:</td>
+                                    <td className="td-stats">Apuestas nulas</td>
                                     <td className="td-stats">{stats.draws}</td>
                                 </tr>
                                 <tr className="tr-stats">
-                                    <td className="td-stats">% de acierto:</td>
+                                    <td className="td-stats">Porcentaje de acierto</td>
                                     <td className="td-stats">{stats.success_rate ? parseFloat(stats.success_rate).toFixed(2) + '%' : ''}</td>
                                 </tr>
                             </tbody>
@@ -98,11 +98,11 @@ const Stats = () => {
                         <table className="table-stats">
                             <tbody>
                                 <tr className="tr-stats">
-                                    <td className="td-stats">Cuota promedio:</td>
+                                    <td className="td-stats">Cuota promedio</td>
                                     <td className="td-stats">{stats.average_odds}</td>
                                 </tr>
                                 <tr className="tr-stats">
-                                    <td className="td-stats">Stake promedio:</td>
+                                    <td className="td-stats">Stake promedio</td>
                                     <td className="td-stats">{stats.average_stake}</td>
                                 </tr>
                             </tbody>

@@ -73,7 +73,6 @@ const NewBet = () => {
     return (
         <div className="new-bet-container">
             <h1 className="new-bet-title">Añadir nuevo pronóstico</h1>
-
             <div className="new-bet-form-container">
                 <form onSubmit={handleSubmit} className="new-bet-form">
                     <div className="form-group">

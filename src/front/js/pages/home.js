@@ -3,8 +3,8 @@ import React from "react";
 export const Home = () => {
 
 	return (
-		<div className="mt-5">
-			<h1 className="text-center">Home</h1>
+		<div className="home-container">
+			<h1 className="home-title">Home</h1>
 		</div>
 	);
 };

@@ -83,7 +83,7 @@ def calcular_estadisticas(apuestas):
         return None
 
     money_bet = sum(apuesta.amount_bet for apuesta in apuestas_con_resultado)
-    money_won = sum(apuesta.result_amount for apuesta in apuestas_con_resultado if apuesta.resultado == 'ganada')
+    money_won = sum(apuesta.result_amount for apuesta in apuestas_con_resultado if apuesta.resultado == 'Ganada')
     profit_units = sum(apuesta.result_units for apuesta in apuestas_con_resultado if apuesta.result_units is not None)
     
     profit = money_won - money_bet
@@ -94,12 +94,10 @@ def calcular_estadisticas(apuestas):
     average_odds = sum(apuesta.odds for apuesta in apuestas_con_resultado) / total_bets
     average_stake = played_units / total_bets if total_bets != 0 else None
 
-    # Contar el número de apuestas ganadas, falladas y nulas
-    wins = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'ganada')
-    losses = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'perdida')
-    draws = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'nula')
+    wins = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'Ganada')
+    losses = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'Perdida')
+    draws = sum(1 for apuesta in apuestas_con_resultado if apuesta.resultado == 'Nula')
 
-    # Calcular el número de apuestas acertadas y el porcentaje de acierto
     success_rate = (wins / total_bets) * 100 if total_bets != 0 else None
 
     return {
@@ -265,10 +263,8 @@ def get_user_stats():
 
     bets = Apuestas.query.filter_by(user_id=user.id).all()
 
-    # Calcula las estadísticas aquí
     stats = calcular_estadisticas(bets)
 
-    # Guarda las estadísticas en la base de datos
     user_stats = EstadisticasUsuario(
         user_id=user.id,
         money_bet=stats["money_bet"],
@@ -288,7 +284,6 @@ def get_user_stats():
     db.session.add(user_stats)
     db.session.commit()
 
-    # Devuelve las estadísticas junto con las apuestas
     return jsonify({'bets': [bet.serialize() for bet in bets], 'stats': stats}), 200
 
 
