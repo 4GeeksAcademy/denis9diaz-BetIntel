@@ -99,7 +99,7 @@ const Stats = () => {
                             <tbody>
                                 <tr className="tr-stats">
                                     <td className="td-stats">Cuota promedio</td>
-                                    <td className="td-stats">{stats.average_odds}</td>
+                                    <td className="td-stats">{stats.average_odds ? parseFloat(stats.average_odds).toFixed(2) : ''}</td>
                                 </tr>
                                 <tr className="tr-stats">
                                     <td className="td-stats">Stake promedio</td>

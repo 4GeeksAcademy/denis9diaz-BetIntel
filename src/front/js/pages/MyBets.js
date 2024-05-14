@@ -52,9 +52,9 @@ const MyBets = () => {
                             <td>{parseFloat(bet.odds).toFixed(2)}</td>
                             <td>{parseFloat(bet.amount_bet).toFixed(2)}€</td>
                             <td>{bet.stake}</td>
-                            <td>{bet.resultado || ''}</td>
-                            <td>{parseFloat(bet.result_amount).toFixed(2) || ''}€</td>
-                            <td>{parseFloat(bet.result_units).toFixed(2) || ''}</td>
+                            <td>{bet.resultado || 'Pendiente'}</td>
+                            <td>{isNaN(parseFloat(bet.result_amount)) ? 'Pendiente' : parseFloat(bet.result_amount).toFixed(2) + '€'}</td>
+                            <td>{isNaN(parseFloat(bet.result_units)) ? 'Pendiente' : parseFloat(bet.result_units).toFixed(2)}</td>
                         </tr>
                     ))}
                 </tbody>
