@@ -6,6 +6,7 @@ import pronostico from "/src/front/img/pronostico.png";
 import lista from "/src/front/img/lista.png";
 import estadisticas from "/src/front/img/estadisticas.png";
 import ranking from "/src/front/img/ranking.png";
+import logo from "/src/front/img/logo.png";
 
 export const Navbar = () => {
     const navigate = useNavigate();
@@ -48,7 +49,7 @@ export const Navbar = () => {
         <nav className="navbar-custom navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid row">
                 <div className="logo-name-navbar col-1">
-                    <Link to="/">Home</Link>
+                    <Link to="/"><img src={logo} alt="logo" className="logo-nav"/></Link>
                 </div>
                 <div className="boton-toggler col-auto ms-auto" style={{ marginRight: '5%' }}>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

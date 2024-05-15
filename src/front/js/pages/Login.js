@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import campo from '/src/front/img/campo.png'
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -36,8 +37,8 @@ const Login = () => {
     };
 
     return (
-        <div className="registro">
-            <div className="auth-container">
+        <div className="login" style={{ backgroundImage: `url(${campo})`, backgroundSize: 'cover', backgroundPosition: 'center', paddingTop: '5rem', minHeight: "100vh" }}>
+            <div className="auth-container-login">
                 <div className="container form-body">
                     <h1 className="title">Iniciar sesión</h1>
                     <form onSubmit={handleSubmit} className="form-login">

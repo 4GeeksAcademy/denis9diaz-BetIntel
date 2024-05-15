@@ -169,18 +169,35 @@
     min-height: 100vh;
 }
 
+.login{
+    min-height: 100vh;
+}
+
 .auth-container {
     max-width: 500px;
     margin: 0 auto;
     padding: 40px 20px; 
     border: 1px solid #e1e1e1; 
     border-radius: 10px; 
-    background-color: #e6e6e6;
+    background-color: rgba(230, 230, 230, 0.9);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5rem;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.auth-container-login {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px 20px; 
+    border: 1px solid #e1e1e1; 
+    border-radius: 10px; 
+    background-color: rgba(230, 230, 230, 0.9);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-top: 5rem;
     margin-bottom: 5rem;
     font-family: 'Exo 2', sans-serif;
 }
+
 
 .title {
     text-align: center;
@@ -251,17 +268,22 @@
 /* CSS de Navbar*/
 
 .navbar-custom {
-    background-color: #f8f9fa; 
-    border-bottom: 1px solid #ddd;
+    background-color: #e7e7e7; 
+    border-bottom: 1px solid #3f865d;
     font-family: 'Exo 2', sans-serif;
     height: auto;
-    padding: 8px;
     align-items: center;
 }
 
 .logo-name-navbar a,
 .navbar-brand.h1 {
     color: #3f865d; 
+}
+
+.logo-nav{
+    height: 90px;
+    width: 110px;
+    margin-top: 8px;
 }
 
 .navbar-brand{
@@ -315,10 +337,9 @@
 /* CSS de NewBet*/
 
 .new-bet-container {
-    margin-top: 50px;
     font-family: 'Exo 2', sans-serif;
     min-height: 100vh;
-    padding-top: 1rem;
+    padding-top: 3rem;
     padding-bottom: 3rem;
 }
 
@@ -383,13 +404,12 @@
 /* CSS de MyBets*/
 
 .my-bet-container {
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: 'Exo 2', sans-serif;
     min-height: 100vh;
-    padding-top: 1rem;
+    padding-top: 3rem;
     padding-bottom: 3rem;
 }
 
@@ -468,7 +488,6 @@
 /* CSS de Stats*/
 
 .stats-container {
-    margin-top: 50px;
     max-width: 80%; 
     margin-left: auto; 
     margin-right: auto; 
@@ -477,7 +496,7 @@
     align-items: center;
     font-family: 'Exo 2', sans-serif;
     min-height: 100vh;
-    padding-top: 1rem;
+    padding-top: 3rem;
     padding-bottom: 3rem;
 }
 
@@ -578,12 +597,11 @@
 /* CSS de Ranking*/
 
 .ranking-container {
-    margin-top: 50px;
     margin-left: auto; 
     margin-right: auto; 
     font-family: 'Exo 2', sans-serif;
     min-height: 100vh;
-    padding-top: 1rem;
+    padding-top: 3rem;
     padding-bottom: 3rem;
 }
 
@@ -597,10 +615,9 @@
 /* CSS de Profile*/
 
 .profile-container {
-    margin-top: 50px;
     font-family: 'Exo 2', sans-serif;
     min-height: 100vh;
-    padding-top: 1rem;
+    padding-top: 3rem;
     padding-bottom: 3rem;
 }
 
