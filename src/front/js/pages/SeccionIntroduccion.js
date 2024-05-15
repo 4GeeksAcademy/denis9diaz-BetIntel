@@ -1,12 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faListAlt, faClock, faCalculator, faChartLine, faPercentage, faMoneyBillWave, faDollarSign, faMoneyCheckAlt, faStream, faCheckCircle, faTachometerAlt, faHandHoldingUsd, faTrophy, faUserFriends, faCheck } from '@fortawesome/free-solid-svg-icons';
-import Fondo from '/src/front/img/fondo-home.png'
 import fondosection from '/src/front/img/fondo-section.png'
 
 const SeccionIntroduccion = () => {
     return (
-        <div className="introduction-section" style={{ backgroundImage: `url(${Fondo})`, backgroundSize: 'cover', backgroundPosition: 'center', paddingTop: '7rem', minHeight: "100vh" }}>
+        <div className="introduction-section">
             <section className="home-header">
                 <div className="container-intro">
                     <h1 className="home-title">Plataforma estadística de apuestas deportivas</h1>

@@ -296,13 +296,14 @@ def get_rankings():
 
     rankings = []
     for user in users:
-        stats = EstadisticasUsuario.query.filter_by(user_id=user.id).first()
+        bets = Apuestas.query.filter_by(user_id=user.id).all()
+        stats = calcular_estadisticas(bets)
         if stats:
             rankings.append({
                 "user_id": user.id,
                 "username": user.username,
-                "yield_percentage": stats.yield_percentage,
-                "profit_units": stats.profit_units 
+                "yield_percentage": stats["yield_percentage"], 
+                "profit_units": stats["profit_units"]
             })
 
     rankings = sorted(rankings, key=lambda x: x["profit_units"], reverse=True)
