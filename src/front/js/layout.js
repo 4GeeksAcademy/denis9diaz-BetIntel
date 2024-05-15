@@ -4,7 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
 import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+import Footer from "./component/footer";
 import { Home } from "./pages/home";
 import Login from "./pages/Login"
 import Register from "./pages/Register"
@@ -12,6 +12,7 @@ import Profile from "./pages/Profile";
 import NewBet from "./pages/NewBet";
 import MyBets from "./pages/MyBets";
 import Stats from "./pages/Stats";
+import Ranking from "./pages/Ranking";
 
 import injectContext from "./store/appContext";
 
@@ -33,6 +34,7 @@ const Layout = () => {
                         <Route element={<NewBet />} path="/newbet" />
                         <Route element={<MyBets />} path="/mybets" />
                         <Route element={<Stats />} path="/stats" />
+                        <Route element={<Ranking />} path="/ranking" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

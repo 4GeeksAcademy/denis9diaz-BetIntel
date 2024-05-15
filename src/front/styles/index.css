@@ -1,11 +1,11 @@
 
-/* CSS de Home */
+/* CSS de SeccionPrimaria */
 
 .home-container {
     font-family: 'Exo 2', sans-serif;
 }
 
-.container {
+.container-intro {
     width: 100%; 
     padding-left: 0;
     padding-right: 0; 
@@ -13,116 +13,165 @@
 
 .home-title {
     text-align: center;
-    font-size: 36px;
+    font-size: 40px;
     padding-bottom: 20px;
-    padding-top: 60px;
+    color: #333; 
+    font-weight: bold; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
-.home-subtitle{
+.home-subtitle {
     text-align: center;
-    font-size: 20px;
+    font-size: 25px;
     margin-bottom: 80px;
+    color: #666; 
+    font-style: italic; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+}
+
+.home-introduction {
+    color: rgb(0, 0, 0);
+    font-size: 22px;
+    font-weight: bold;
+    padding-bottom: 30px;
 }
 
 .intro-section {
     display: flex;
     justify-content: space-between;
     margin-bottom: 80px; 
-    font-size: 19px;
+    font-size: 15px;
 }
 
 .intro-section-left,
 .intro-section-right {
-    flex: 1; 
+    flex: 1;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 2px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
-.intro-section-right{
-    margin-left: 90px;
+.intro-section-left:hover,
+.intro-section-right:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-.what-title, .how-title{
+.intro-section-right {
+    margin-left: 20px;
+}
+
+.intro-section-right {
+    margin-left: 2rem;
+}
+
+.what-title, .how-title {
     margin-bottom: 35px;
+    font-size: 40px;
 }
 
-.introduction-list,
-.how-it-works-list,
-.sub-stats-list {
+.introduction-list, .how-it-works-list, .sub-stats-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    font-size: 22px;
+    text-align: left; 
 }
 
-.introduction-item,
-.how-it-works-item,
-.sub-stats-item {
+.introduction-item, .how-it-works-item, .sub-stats-item, .what-item, .how-list-item {
     margin-bottom: 10px;
+    padding-left: 20px; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4) !important; 
+    font-size: 21px !important;
 }
 
 .sub-stats-list {
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-left: 35px; 
+    margin-left: 35px;
 }
 
-.home-new-bet,
-.home-stats,
-.home-top-users {
+.home-introduction .icon, .home-introduction .sub-icon {
+    width: 15px;
+    margin-right: 5px;
+    margin-top: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
+}
+
+.what-item, .how-list-item, .sub-stats-item {
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.what-title, .how-title{
+    font-weight: bold !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4) !important; 
+}
+
+/* CSS de SeccionSecundaria */
+
+.seccion-secundaria {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: linear-gradient(to bottom, #ffffff, #969696);
+    padding: 50px 0;
+    border-top: 2px solid #ddd;
+}
+
+.container {
+    text-align: center;
+}
+
+.home-new-bet, .home-stats, .home-top-users .home-my-bets{
     padding: 60px 0;
     text-align: center;
 }
 
-.home-new-bet h2,
-.home-stats h2,
-.home-top-users h2 {
+.home-new-bet h2, .home-stats h2, .home-top-users h2, .home-my-bets h2 {
     font-size: 28px;
     margin-bottom: 30px;
 }
 
-.home-new-bet p,
-.home-stats p,
-.home-top-users p {
-    font-size: 20px;
-    margin-bottom: 30px;
+.bet-title, .stats-title-home, .rankings-title-home, .pron-title {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.btn-primary {
-    padding: 12px 24px;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    background-color: #2d6a47;
-    text-decoration: none;
-    transition: background-color 0.3s;
+.icono-section {
+    display: inline-block;
+    overflow: hidden;
+    transition: transform 0.4s, box-shadow 0.3s;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 80px;
+    width: 80px;
 }
 
-.btn-primary:hover {
-    background-color: #2d6a47;
+.icono-section img {
+    width: 100px; 
+    height: auto;
 }
 
-.home-introduction .what-item,
-.home-introduction .how-list-item,
-.home-introduction .sub-stats-item {
-    margin-left: 5px;
-    margin-top: 5px;
-}
-
-.home-introduction .icon,
-.home-introduction .sub-icon {
-    margin-right: 5px;
-    margin-top: 5px;
-}
-
-@media (min-width: 768px) {
-    .home-container {
-        padding-top: 50px;
-    }
-
-    .home-title {
-        font-size: 48px;
-    }
+.icono-section:hover {
+    transform: scale(1.2);
 }
 
 /* CSS de Formularios */
+
+.registro{
+    min-height: 100vh;
+}
+
+.login{
+    min-height: 100vh;
+}
 
 .auth-container {
     max-width: 500px;
@@ -130,11 +179,25 @@
     padding: 40px 20px; 
     border: 1px solid #e1e1e1; 
     border-radius: 10px; 
-    background-color: #e6e6e6;
+    background-color: rgba(230, 230, 230, 0.9);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 80px;
+    margin-bottom: 5rem;
     font-family: 'Exo 2', sans-serif;
 }
+
+.auth-container-login {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px 20px; 
+    border: 1px solid #e1e1e1; 
+    border-radius: 10px; 
+    background-color: rgba(230, 230, 230, 0.9);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    font-family: 'Exo 2', sans-serif;
+}
+
 
 .title {
     text-align: center;
@@ -205,14 +268,32 @@
 /* CSS de Navbar*/
 
 .navbar-custom {
-    background-color: #f8f9fa; 
-    border-bottom: 1px solid #ddd;
+    background-color: #e7e7e7; 
+    border-bottom: 1px solid #3f865d;
     font-family: 'Exo 2', sans-serif;
+    height: auto;
+    align-items: center;
 }
 
 .logo-name-navbar a,
 .navbar-brand.h1 {
     color: #3f865d; 
+}
+
+.logo-nav{
+    height: 90px;
+    width: 110px;
+    margin-top: 8px;
+}
+
+.navbar-brand{
+    font-size: 25px;
+}
+
+.icono-nav{
+    height: 55px;
+    width: 55px;
+    margin-right: 6px;
 }
 
 .boton-toggler button {
@@ -253,12 +334,13 @@
     opacity: 0.8; 
 }
 
-
 /* CSS de NewBet*/
 
 .new-bet-container {
-    margin-top: 50px;
     font-family: 'Exo 2', sans-serif;
+    min-height: 100vh;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 .new-bet-title {
@@ -322,11 +404,13 @@
 /* CSS de MyBets*/
 
 .my-bet-container {
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: 'Exo 2', sans-serif;
+    min-height: 100vh;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 .my-bet-title {
@@ -404,7 +488,6 @@
 /* CSS de Stats*/
 
 .stats-container {
-    margin-top: 50px;
     max-width: 80%; 
     margin-left: auto; 
     margin-right: auto; 
@@ -412,6 +495,9 @@
     flex-direction: column;
     align-items: center;
     font-family: 'Exo 2', sans-serif;
+    min-height: 100vh;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 .stats-title {
@@ -465,11 +551,74 @@
     border-right: 1px solid #ffffff;
 }
 
+/* CSS de Footer */
+
+.footer {
+    background: linear-gradient(to bottom, #585858, #000000);
+    color: #fff;
+    padding: 60px 0;
+    font-family: 'Exo 2', sans-serif;
+    box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.footer h4 {
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+.footer p {
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.footer .list-inline-item {
+    margin-right: 20px;
+}
+
+.footer .fab {
+    font-size: 24px;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.footer .fab:hover {
+    color: #38d39f;
+}
+
+.about-us {
+    color: inherit; 
+    text-decoration: none; 
+}
+
+.about-us:hover {
+    color: #38d39f; 
+}
+
+/* CSS de Ranking*/
+
+.ranking-container {
+    margin-left: auto; 
+    margin-right: auto; 
+    font-family: 'Exo 2', sans-serif;
+    min-height: 100vh;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.ranking-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 40px;
+    color: #3f865d; 
+}
+
 /* CSS de Profile*/
 
 .profile-container {
-    margin-top: 50px;
     font-family: 'Exo 2', sans-serif;
+    min-height: 100vh;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 .profile-title {
@@ -478,4 +627,3 @@
     margin-bottom: 40px;
     color: #3f865d; 
 }
-

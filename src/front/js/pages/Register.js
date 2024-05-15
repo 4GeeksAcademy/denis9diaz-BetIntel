@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import fondo from '/src/front/img/fondo-registro.png'
 
 const Register = () => {
     const [email, setEmail] = useState("");
@@ -66,6 +67,7 @@ const Register = () => {
     };
 
     return (
+        <div className="registro" style={{ backgroundImage: `url(${fondo})`, backgroundSize: 'cover', backgroundPosition: 'center', paddingTop: '7rem', minHeight: "100vh" }}>
         <div className="auth-container">
             <div className="container form-body">
                 <h1 className="title">Crear cuenta</h1>
@@ -128,6 +130,7 @@ const Register = () => {
                     ¿Ya tienes una cuenta? <a className="link-register" href="/login">Inicia sesión</a>
                 </p>
             </div>
+        </div>
         </div>
     );
 };
