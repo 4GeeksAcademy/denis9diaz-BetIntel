@@ -66,6 +66,7 @@ const Register = () => {
     };
 
     return (
+        <div className="registro">
         <div className="auth-container">
             <div className="container form-body">
                 <h1 className="title">Crear cuenta</h1>
@@ -128,6 +129,7 @@ const Register = () => {
                     ¿Ya tienes una cuenta? <a className="link-register" href="/login">Inicia sesión</a>
                 </p>
             </div>
+        </div>
         </div>
     );
 };

@@ -36,41 +36,43 @@ const Login = () => {
     };
 
     return (
-        <div className="auth-container">
-            <div className="container form-body">
-                <h1 className="title">Iniciar sesión</h1>
-                <form onSubmit={handleSubmit} className="form-login">
-                    {error && <div className="error-message">{error}</div>}
-                    <div className="input-group">
-                        <label className="label-form" htmlFor="email">Email</label>
-                        <input
-                            type="text"
-                            id="email"
-                            className="input-form"
-                            placeholder="Introduce tu email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div>
-                    <div className="input-group">
-                        <label className="label-form" htmlFor="password">Contraseña</label>
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            id="password"
-                            className="input-form"
-                            placeholder="Introduce tu contraseña"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                        <div className="password-toggle-icon" onClick={() => setShowPassword(!showPassword)}>
-                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+        <div className="registro">
+            <div className="auth-container">
+                <div className="container form-body">
+                    <h1 className="title">Iniciar sesión</h1>
+                    <form onSubmit={handleSubmit} className="form-login">
+                        {error && <div className="error-message">{error}</div>}
+                        <div className="input-group">
+                            <label className="label-form" htmlFor="email">Email</label>
+                            <input
+                                type="text"
+                                id="email"
+                                className="input-form"
+                                placeholder="Introduce tu email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                         </div>
-                    </div>
-                    <button type="submit" className="btn btn-success">Entrar</button>
-                </form>
-                <p className="mt-3 text-center">
-                    ¿No tienes cuenta? <Link className="link-register" to="/register">Regístrate</Link>
-                </p>
+                        <div className="input-group">
+                            <label className="label-form" htmlFor="password">Contraseña</label>
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                id="password"
+                                className="input-form"
+                                placeholder="Introduce tu contraseña"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <div className="password-toggle-icon" onClick={() => setShowPassword(!showPassword)}>
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </div>
+                        </div>
+                        <button type="submit" className="btn btn-success">Entrar</button>
+                    </form>
+                    <p className="mt-3 text-center">
+                        ¿No tienes cuenta? <Link className="link-register" to="/register">Regístrate</Link>
+                    </p>
+                </div>
             </div>
         </div>
     );

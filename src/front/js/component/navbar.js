@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 import pronostico from "/src/front/img/pronostico.png";
 import lista from "/src/front/img/lista.png";
 import estadisticas from "/src/front/img/estadisticas.png";
+import ranking from "/src/front/img/ranking.png";
 
 export const Navbar = () => {
     const navigate = useNavigate();
@@ -64,6 +65,9 @@ export const Navbar = () => {
                         </li>
                         <li className="nav-item me-5">
                             <Link to="/stats" className="navbar-brand h1" title="stats"><img src={estadisticas} alt="estadisticas" className="icono-nav"/>Estadísticas</Link>
+                        </li>
+                        <li className="nav-item me-5">
+                            <Link to="/ranking" className="navbar-brand h1" title="stats"><img src={ranking} alt="ranking" className="icono-nav"/>Ranking</Link>
                         </li>
                     </ul>
                     <ul className="navbar-nav ms-auto">
