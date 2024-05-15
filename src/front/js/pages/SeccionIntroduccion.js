@@ -2,14 +2,14 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faListAlt, faClock, faCalculator, faChartLine, faPercentage, faMoneyBillWave, faDollarSign, faMoneyCheckAlt, faStream, faCheckCircle, faTachometerAlt, faHandHoldingUsd, faTrophy, faUserFriends, faCheck } from '@fortawesome/free-solid-svg-icons';
 import Fondo from '/src/front/img/fondo-home.png'
-import cesped from '/src/front/img/cesped.png'
+import fondosection from '/src/front/img/fondo-section.png'
 
 const SeccionIntroduccion = () => {
     return (
         <div className="introduction-section" style={{ backgroundImage: `url(${Fondo})`, backgroundSize: 'cover', backgroundPosition: 'center', paddingTop: '7rem', minHeight: "100vh" }}>
             <section className="home-header">
                 <div className="container-intro">
-                    <h1 className="home-title">Plataforma de estadísticas de apuestas deportivas</h1>
+                    <h1 className="home-title">Plataforma estadística de apuestas deportivas</h1>
                     <p className="home-subtitle">Lleva un control exhaustivo de tus apuestas y mejora tus resultados con nuestras herramientas</p>
                 </div>
             </section>
@@ -21,30 +21,35 @@ const SeccionIntroduccion = () => {
                             padding: '3rem',
                             minHeight: "30vh",
                             borderRadius: '10px', 
-                            backgroundImage: `url(${cesped})`, 
+                            backgroundImage: `url(${fondosection})`, 
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                         }}>
                             <h2 className="what-title">¿Qué puedes hacer aquí?</h2>
+                            <h5 className="what-subtitle">Contratar pronosticadores</h5>
+                            <ul className="introduction-list">
+                                <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Accede al Ranking</span></li>
+                                <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Busca el pronosticador que más te guste</span></li>
+                                <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Accede a sus estadísticas detalladas</span></li>
+                                <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Contrata sus servicios y ganad dinero juntos</span></li>
+                            </ul>
+                            <h5 className="what-subtitle-2">Como pronosticador</h5>
                             <ul className="introduction-list">
                                 <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Crear y gestionar pronósticos de manera eficiente</span></li>
                                 <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Acceder a una lista detallada de tus apuestas</span></li>
                                 <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Acceder a todas tus estadísticas</span></li>
                                 <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Competir por ser el mejor pronosticador</span></li>
                             </ul>
-                            <div className="image-intro">
-                                <img src="" />
-                            </div>
                         </div>
                         <div className="intro-section-right" style={{
-                            background: `rgba(255, 255, 255, 0.2) url(${cesped})`,
+                            background: `rgba(255, 255, 255, 0.2) url(${fondosection})`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             padding: '3rem',
                             minHeight: "30vh",
                             borderRadius: '10px',
                         }}>
-                            <h2 className="how-title">¿Cómo funciona?</h2>
+                            <h2 className="how-title">Para Pronosticadores</h2>
                             <ol className="how-it-works-list">
                                 <li><FontAwesomeIcon className="icon" icon={faListAlt} /><span className="how-list-item">Añade tus pronósticos</span></li>
                                 <li><FontAwesomeIcon className="icon" icon={faClock} /><span className="how-list-item">Espera a que se determine el resultado</span></li>
@@ -62,8 +67,8 @@ const SeccionIntroduccion = () => {
                                         <li><FontAwesomeIcon className="sub-icon" icon={faHandHoldingUsd} /><span className="sub-stats-item">Stake promedio</span></li>
                                     </ul>
                                 </li>
-                                <li><FontAwesomeIcon className="icon" icon={faTrophy} /><span className="how-list-item">Ocuparás una posición en el ranking de mejores pronosticadores</span></li>
-                                <li><FontAwesomeIcon className="icon" icon={faUserFriends} /><span className="how-list-item">Podrás añadir tus redes sociales para darte a conocer y facilitar que contraten tus servicios</span></li>
+                                <li><FontAwesomeIcon className="icon" icon={faTrophy} /><span className="how-list-item">Posicionate en el ranking de pronosticadores</span></li>
+                                <li><FontAwesomeIcon className="icon" icon={faUserFriends} /><span className="how-list-item">Los usuarios podrán contratar tus servicios</span></li>
                             </ol>
                         </div>
                     </div>
