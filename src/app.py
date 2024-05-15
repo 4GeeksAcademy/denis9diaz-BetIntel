@@ -290,6 +290,26 @@ def get_user_stats():
     return jsonify({'bets': [bet.serialize() for bet in bets], 'stats': stats}), 200
 
 
+@app.route('/api/rankings', methods=['GET'])
+def get_rankings():
+    users = User.query.all()
+
+    rankings = []
+    for user in users:
+        stats = EstadisticasUsuario.query.filter_by(user_id=user.id).first()
+        if stats:
+            rankings.append({
+                "user_id": user.id,
+                "username": user.username,
+                "yield_percentage": stats.yield_percentage,
+                "profit_units": stats.profit_units 
+            })
+
+    rankings = sorted(rankings, key=lambda x: x["profit_units"], reverse=True)
+
+    return jsonify(rankings), 200
+
+
 '''-------------------------------------Finish Endpoints---------------------------------'''
 
 
