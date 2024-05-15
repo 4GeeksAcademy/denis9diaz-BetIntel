@@ -1,187 +1,4 @@
 
-/* CSS de SeccionPrimaria */
-
-.home-container {
-    font-family: 'Exo 2', sans-serif;
-}
-
-.container-intro {
-    width: 100%; 
-    padding-left: 0;
-    padding-right: 0; 
-}
-
-.home-title {
-    text-align: center;
-    font-size: 40px;
-    padding-bottom: 20px;
-    color: #0f0f0f; 
-    font-weight: bold; 
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
-}
-
-.home-subtitle {
-    text-align: center;
-    font-size: 25px;
-    margin-bottom: 80px;
-    color: #474747; 
-    font-style: italic; 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
-}
-
-.home-introduction {
-    color: rgb(0, 0, 0);
-    padding-bottom: 30px;
-}
-
-.intro-section {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 80px;
-    font-size: 28px;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.9); 
-}
-
-.intro-section-left,
-.intro-section-right {
-    flex: 1;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 2px solid black;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-}
-
-.intro-section-left:hover,
-.intro-section-right:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-.intro-section-right {
-    margin-left: 20px;
-}
-
-.intro-section-right {
-    margin-left: 2rem;
-}
-
-.what-title, .how-title {
-    margin-bottom: 35px;
-    font-size: 40px;
-}
-
-.introduction-list, .how-it-works-list, .sub-stats-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: left; 
-}
-
-.introduction-item, .how-it-works-item, .sub-stats-item, .what-item, .how-list-item {
-    margin-bottom: 10px;
-    padding-left: 20px; 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4) !important; 
-    font-size: 21px !important;
-}
-
-.sub-stats-list {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 35px;
-}
-
-.home-introduction .icon, .home-introduction .sub-icon {
-    width: 15px;
-    margin-right: 5px;
-    margin-top: 5px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
-}
-
-.what-item, .how-list-item, .sub-stats-item {
-    margin-left: 15px;
-    margin-top: 5px;
-}
-
-.what-title, .how-title {
-    font-weight: bold !important;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.9); 
-    color: rgb(3, 3, 3); 
-}
-
-.what-subtitle{
-    font-weight: bold !important;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.9); 
-    color: rgb(0, 0, 0); 
-    font-size: 30px;
-    padding-bottom: 11px;
-    padding-top: 18px;
-    text-decoration: underline;
-}
-
-.what-subtitle-2{
-    font-weight: bold !important;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.9); 
-    color: rgb(0, 0, 0); 
-    font-size: 30px;
-    padding-bottom: 11px;
-    padding-top: 55px;
-    text-decoration: underline;
-}
-
-/* CSS de SeccionSecundaria */
-
-.seccion-secundaria {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-image: linear-gradient(to bottom, #b4b4b4, #ffffff);
-    padding: 50px 0;
-    border-top: 2px solid #ddd;
-}
-
-.container {
-    text-align: center;
-}
-
-.home-new-bet, .home-stats, .home-top-users .home-my-bets{
-    padding: 60px 0;
-    text-align: center;
-}
-
-.home-new-bet h2, .home-stats h2, .home-top-users h2, .home-my-bets h2 {
-    font-size: 28px;
-    margin-bottom: 30px;
-}
-
-.bet-title, .stats-title-home, .rankings-title-home, .pron-title {
-    font-size: 30px;
-    margin-bottom: 20px;
-    color: #333;
-    font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.icono-section {
-    display: inline-block;
-    overflow: hidden;
-    transition: transform 0.4s, box-shadow 0.3s;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    height: 110px;
-    width: 110px;
-}
-
-.icono-section img {
-    width: 100px; 
-    height: auto;
-}
-
-.icono-section:hover {
-    transform: scale(1.2);
-}
-
 /* CSS de Formularios */
 
 .registro{
@@ -353,6 +170,196 @@
     opacity: 0.8; 
 }
 
+/* CSS de SeccionPrimaria */
+
+.home-container {
+    font-family: 'Exo 2', sans-serif;
+}
+
+.introduction-section {
+    background-image: linear-gradient(to top, #b4b4b4, #f1f1f1);    background-size: cover;
+    background-position: center;
+    padding-top: 7rem;
+    min-height: 100vh;
+}
+  
+.container-intro {
+    width: 100%; 
+    padding-left: 0;
+    padding-right: 0; 
+}
+
+.home-title {
+    text-align: center;
+    font-size: 40px;
+    padding-bottom: 20px;
+    color: #0f0f0f; 
+    font-weight: bold; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+.home-subtitle {
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 80px;
+    color: #474747; 
+    font-style: italic; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+}
+
+.home-introduction {
+    color: rgb(0, 0, 0);
+    padding-bottom: 30px;
+}
+
+.intro-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    font-size: 28px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.9); 
+}
+
+.intro-section-left,
+.intro-section-right {
+    flex: 1;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 2px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.intro-section-left:hover,
+.intro-section-right:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.intro-section-right {
+    margin-left: 20px;
+}
+
+.intro-section-right {
+    margin-left: 2rem;
+}
+
+.what-title, .how-title {
+    margin-bottom: 35px;
+    font-size: 40px;
+}
+
+.introduction-list, .how-it-works-list, .sub-stats-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: left; 
+}
+
+.introduction-item, .how-it-works-item, .sub-stats-item, .what-item, .how-list-item {
+    margin-bottom: 10px;
+    padding-left: 20px; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4) !important; 
+    font-size: 21px !important;
+}
+
+.sub-stats-list {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 35px;
+}
+
+.home-introduction .icon, .home-introduction .sub-icon {
+    width: 15px;
+    margin-right: 5px;
+    margin-top: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
+}
+
+.what-item, .how-list-item, .sub-stats-item {
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.what-title, .how-title {
+    font-weight: bold !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.9); 
+    color: rgb(3, 3, 3); 
+}
+
+.what-subtitle{
+    font-weight: bold !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.9); 
+    color: rgb(0, 0, 0); 
+    font-size: 28px;
+    padding-bottom: 11px;
+    padding-top: 18px;
+    font-style: italic;
+}
+
+.what-subtitle-2{
+    font-weight: bold !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.9); 
+    color: rgb(0, 0, 0); 
+    font-size: 28px;
+    padding-bottom: 11px;
+    padding-top: 55px;
+    font-style: italic;
+}
+
+/* CSS de SeccionSecundaria */
+
+.seccion-secundaria {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: linear-gradient(to bottom, #b4b4b4, #ffffff);
+    padding: 50px 0;
+    border-top: 2px solid #ddd;
+}
+
+.container {
+    text-align: center;
+}
+
+.home-new-bet, .home-stats, .home-top-users .home-my-bets{
+    padding: 60px 0;
+    text-align: center;
+}
+
+.home-new-bet h2, .home-stats h2, .home-top-users h2, .home-my-bets h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.bet-title, .stats-title-home, .rankings-title-home, .pron-title {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.icono-section {
+    display: inline-block;
+    overflow: hidden;
+    transition: transform 0.4s, box-shadow 0.3s;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 110px;
+    width: 110px;
+}
+
+.icono-section img {
+    width: 100px; 
+    height: auto;
+}
+
+.icono-section:hover {
+    transform: scale(1.2);
+}
+
 /* CSS de NewBet*/
 
 .new-bet-container {
@@ -360,6 +367,7 @@
     min-height: 100vh;
     padding-top: 3rem;
     padding-bottom: 3rem;
+    background: linear-gradient(to bottom, #ffffff, #a5a5a5); 
 }
 
 .new-bet-title {
@@ -430,6 +438,7 @@
     min-height: 100vh;
     padding-top: 3rem;
     padding-bottom: 3rem;
+    background: linear-gradient(to bottom, #ffffff, #a5a5a5); 
 }
 
 .my-bet-title {
@@ -506,10 +515,7 @@
 
 /* CSS de Stats*/
 
-.stats-container {
-    max-width: 80%; 
-    margin-left: auto; 
-    margin-right: auto; 
+.stats {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -517,6 +523,7 @@
     min-height: 100vh;
     padding-top: 3rem;
     padding-bottom: 3rem;
+    background: linear-gradient(to bottom, #ffffff, #a5a5a5); 
 }
 
 .stats-title {
@@ -570,52 +577,9 @@
     border-right: 1px solid #ffffff;
 }
 
-/* CSS de Footer */
-
-.footer {
-    background: linear-gradient(to bottom, #585858, #000000);
-    color: #fff;
-    padding: 60px 0;
-    font-family: 'Exo 2', sans-serif;
-    box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.5); 
-}
-
-.footer h4 {
-    color: #fff;
-    margin-bottom: 25px;
-}
-
-.footer p {
-    color: #ccc;
-    margin-bottom: 10px;
-}
-
-.footer .list-inline-item {
-    margin-right: 20px;
-}
-
-.footer .fab {
-    font-size: 24px;
-    color: #fff;
-    transition: color 0.3s;
-}
-
-.footer .fab:hover {
-    color: #38d39f;
-}
-
-.about-us {
-    color: inherit; 
-    text-decoration: none; 
-}
-
-.about-us:hover {
-    color: #38d39f; 
-}
-
 /* CSS de Ranking*/
 
-.ranking-container {
+.ranking {
     margin: 0 auto;
     font-family: 'Exo 2', sans-serif;
     min-height: 100vh;
@@ -662,16 +626,55 @@
     padding: 0.8rem; 
     text-align: center;
     font-size: 1.4rem; 
+    position: relative;
+    background-color: #f7f7f7;
 }
 
-.rankings-data tr {
-    background-color: #f7f7f7;
-    border-top: 2px solid #ccc;
+.rankings-data tr:not(.top-rank) td {
+    background: linear-gradient(rgba(247, 247, 247, 0.8), rgba(247, 247, 247, 1)); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.rankings-data tr.top-rank td {
+    position: relative;
+}
+
+.rankings-data tr.top-rank td:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to top left, rgba(255, 215, 0, 0.5), transparent);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border-radius: 0 0 6px 0;
+}
+
+.rankings-data tr.top-rank:nth-child(2) td:after {
+    background: linear-gradient(to top left, rgba(192, 192, 192, 0.5), transparent);
+}
+
+.rankings-data tr.top-rank:nth-child(3) td:after {
+    background: linear-gradient(to top left, rgba(205, 127, 50, 0.5), transparent);
+}
+
+.rankings-data tr:not(.top-rank) td {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cup-icon {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    color: black;
+    font-size: 1.5rem;
+    z-index: 2;
 }
 
 .btn-profile,
 .btn-contract {
-    background-color: #3f865d;
+    background-color: #1b5332;
     color: white;
     border: none;
     padding: 8px 16px; 
@@ -679,6 +682,8 @@
     cursor: pointer;
     font-size: 1.4rem; 
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 3;
 }
 
 .btn-profile:hover,
@@ -706,4 +711,57 @@
     font-size: 28px;
     margin-bottom: 40px;
     color: #3f865d; 
+}
+
+/* CSS de Footer */
+
+.footer {
+    background: linear-gradient(to bottom, #585858, #000000);
+    color: #fff;
+    padding: 60px 0;
+    font-family: 'Exo 2', sans-serif;
+    box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.footer h4 {
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+.footer p {
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.footer .list-inline-item {
+    margin-right: 20px;
+}
+
+.footer .fab {
+    font-size: 24px;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.footer .fab:hover {
+    color: #38d39f;
+}
+
+.about-us {
+    color: inherit; 
+    text-decoration: none; 
+}
+
+.about-us:hover {
+    color: #38d39f; 
+}
+
+.logo-footer{
+    padding-top: 20px;
+    width: 220px;
+}
+
+.logo-footer-div{
+    padding-left: 9rem;
+
 }

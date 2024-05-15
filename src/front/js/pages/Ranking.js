@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FaTrophy } from 'react-icons/fa';
 
 const Ranking = () => {
     const [rankings, setRankings] = useState([]);
@@ -23,8 +24,8 @@ const Ranking = () => {
     }, []);
 
     return (
-        <div className="ranking-container">
-            <h1 className="ranking-title">Ranking</h1>
+        <div className="ranking ">
+            <h1 className="ranking-title">Ranking de Pronosticadores</h1>
             <table className="rankings-table">
                 <thead>
                     <tr className="rankings-header">
@@ -38,11 +39,18 @@ const Ranking = () => {
                 </thead>
                 <tbody className="rankings-data">
                     {rankings.map((user, index) => (
-                        <tr key={user.user_id}>
+                        <tr key={user.user_id} className={index < 3 ? 'top-rank' : ''}>
                             <td>{index + 1}</td>
-                            <td>{user.username}</td>
-                            <td>{user.profit_units}</td>
-                            <td>{user.yield_percentage}%</td>
+                            <td>
+                                {user.username}
+                                {index < 3 && (
+                                    <span className="cup-icon" style={{ fontSize: index === 0 ? '2rem' : index === 1 ? '1.5rem' : '1.2rem', color: 'black' }}>
+                                        <FaTrophy />
+                                    </span>
+                                )}
+                            </td>
+                            <td>{user.profit_units !== null ? parseFloat(user.profit_units).toFixed(2) : 'N/A'}</td>
+                            <td>{user.yield_percentage !== null ? parseFloat(user.yield_percentage).toFixed(2) + '%' : 'N/A'}</td>
                             <td><button className="btn-profile">Ver más</button></td>
                             <td><button className="btn-contract">Contratar</button></td>
                         </tr>

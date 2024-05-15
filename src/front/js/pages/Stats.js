@@ -41,7 +41,7 @@ const Stats = () => {
     }, []);
 
     return (
-        <div className="stats-container">
+        <div className="stats">
             <h1 className="stats-title">Estadísticas</h1>
             {stats && (
                 <div className="stats-details">
@@ -55,7 +55,7 @@ const Stats = () => {
                                 </tr>
                                 <tr className="tr-stats">
                                     <td className="td-stats">Yield</td>
-                                    <td className="td-stats">{stats.yield_percentage ? parseFloat(stats.yield_percentage).toFixed(2) : ''}%</td>
+                                    <td className="td-stats">{stats.yield_percentage !== null ? parseFloat(stats.yield_percentage).toFixed(2) + '%' : 'N/A'}</td>
                                 </tr>
                             </tbody>
                         </table>
