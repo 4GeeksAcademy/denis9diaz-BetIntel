@@ -1,4 +1,86 @@
 
+/* CSS de Navbar*/
+
+.navbar-custom {
+    background-color: #e7e7e7; 
+    border-bottom: 1px solid #00A97F;
+    font-family: 'Exo 2', sans-serif;
+    height: auto;
+    align-items: center;
+}
+
+.logo-name-navbar a,
+.navbar-brand.h1 {
+    color: #00A97F; 
+}
+
+.logo-nav{
+    height: 90px;
+    width: 110px;
+    margin-top: 8px;
+}
+
+.navbar-brand{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.icono-nav{
+    height: 55px;
+    width: 55px;
+    margin-right: 6px;
+}
+
+.boton-toggler button {
+    background-color: transparent;
+    border: none;
+    color: #3f865d;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.boton-toggler button:hover {
+    color: #1e9b0d;
+}
+
+.dropdown-menu {
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    min-width: 10rem;
+    padding: 0.5rem 0;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #212529;
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+.dropdown-menu .logout {
+    color: #dc3545;
+}
+
+.dropdown-menu .logout:hover {
+    background-color: #f8d7da;
+}
+
+.boton-navbar {
+    color: #fff; 
+}
+
+.boton-navbar:hover {
+    opacity: 0.8; 
+}
+
 /* CSS de Formularios */
 
 .registro{
@@ -85,7 +167,7 @@
     padding: 10px;
     border: none;
     border-radius: 8px;
-    background-color: #3f865d; 
+    background-color: #00A97F; 
     color: #fff; 
     font-size: 18px; 
     text-align: center;
@@ -94,86 +176,23 @@
 }
 
 .btn-success:hover {
-    background-color: #156436; 
+    background-color: #04795c; 
 }
 
 .link-register{
-    color: #3f865d;
-}
-
-/* CSS de Navbar*/
-
-.navbar-custom {
-    background-color: #e7e7e7; 
-    border-bottom: 1px solid #3f865d;
-    font-family: 'Exo 2', sans-serif;
-    height: auto;
-    align-items: center;
-}
-
-.logo-name-navbar a,
-.navbar-brand.h1 {
-    color: #3f865d; 
-}
-
-.logo-nav{
-    height: 90px;
-    width: 110px;
-    margin-top: 8px;
-}
-
-.navbar-brand{
-    font-size: 25px;
-}
-
-.icono-nav{
-    height: 55px;
-    width: 55px;
-    margin-right: 6px;
-}
-
-.boton-toggler button {
-    background-color: transparent; 
-    border: none; 
-    color: #3f865d; 
-}
-
-.boton-toggler button:hover {
-    background-color: transparent; 
-}
-
-.dropdown-menu {
-    background-color: #f8f9fa; 
-}
-
-.dropdown-menu .dropdown-item {
-    color: #000000; 
-}
-
-.dropdown-menu .dropdown-item:hover {
-    background-color: #f0f0f0; 
-}
-
-.dropdown-menu .logout {
-    color: #dc3545; 
-}
-
-.dropdown-menu .logout:hover {
-    background-color: #f8d7da; 
-}
-
-.boton-navbar {
-    color: #fff; 
-}
-
-.boton-navbar:hover {
-    opacity: 0.8; 
+    color: #00A97F;
 }
 
 /* CSS de SeccionPrimaria */
 
 .home-container {
     font-family: 'Exo 2', sans-serif;
+}
+
+.image-title{
+    width: 70%;
+    display: flex;
+    justify-content: center;
 }
 
 .introduction-section {
@@ -184,25 +203,29 @@
 }
   
 .container-intro {
-    width: 100%; 
+    width: 100%;
     padding-left: 0;
-    padding-right: 0; 
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .home-title {
     text-align: center;
     font-size: 40px;
     padding-bottom: 20px;
-    color: #0f0f0f; 
+    color: #181a18; 
     font-weight: bold; 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+    font-family: 'Zing Rust Base', sans-serif;
 }
 
 .home-subtitle {
     text-align: center;
     font-size: 25px;
     margin-bottom: 80px;
-    color: #474747; 
+    color: #2f332f; 
     font-style: italic; 
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
 }
@@ -315,7 +338,8 @@
     align-items: center;
     background-image: linear-gradient(to bottom, #b4b4b4, #ffffff);
     padding: 50px 0;
-    border-top: 2px solid #ddd;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #ebebeb;
 }
 
 .container {
@@ -373,20 +397,20 @@
 .new-bet-title {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 40px;
-    color: #3f865d; 
+    margin-bottom: 35px;
+    color: #00A97F; 
 }
 
 .new-bet-form-container {
     display: flex;
     justify-content: center;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .new-bet-form {
     width: 600px; 
     padding: 20px;
-    border: 2px solid #3f865d; 
+    border: 2px solid #00A97F; 
     border-radius: 8px;
     background-color: #e6e6e6;
 }
@@ -398,8 +422,8 @@
 .form-label {
     display: block;
     margin-bottom: 10px;
-    font-size: 16px;
-    color: #3f865d; 
+    font-size: 15px;
+    color: #00A97F; 
 }
 
 .form-input {
@@ -409,8 +433,8 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-    margin-top: 7px;
-    margin-bottom: 2px;
+    margin-top: 6px;
+    margin-bottom: 1px;
 }
 
 .submit-button {
@@ -418,7 +442,7 @@
     padding: 12px; 
     font-size: 18px;
     color: #fff;
-    background-color: #3f865d;
+    background-color: #00A97F;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -445,7 +469,7 @@
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 40px;
-    color: #3f865d !important;
+    color: #00A97F !important;
 }
 
 .my-bet-table-container {
@@ -473,7 +497,7 @@
 }
 
 .my-bet-table th {
-    background-color: #3f865d;
+    background-color: #00A97F;
     color: #fff;
     font-weight: lighter;
 }
@@ -501,15 +525,15 @@
 }
 
 .won {
-    background: linear-gradient(315deg, #a1db5d, #c5f88b) !important;
+    background: linear-gradient(315deg, #e2ffc1, #c5f88b) !important;
 }
 
 .lost {
-    background: linear-gradient(315deg, #fd776d, #fd918a) !important;
+    background: linear-gradient(315deg, #ffc6c2, #fd918a) !important;
 }
 
 .void {
-    background: linear-gradient(315deg, #73bffd, #afd8fa) !important;
+    background: linear-gradient(315deg, #d9edff, #afd8fa) !important;
 }
 
 
@@ -530,7 +554,7 @@
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 40px;
-    color: #3f865d; 
+    color: #00A97F; 
 }
 
 .stats-details {
@@ -546,11 +570,11 @@
     overflow: hidden;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     background: linear-gradient(135deg, #f7f7f7, #d6d6d6); 
-    margin-bottom: 40px; 
+    margin-bottom: 35px; 
 }
 
 .h2-stats {
-    background: linear-gradient(135deg, #62bd88, #3f865d);
+    background: linear-gradient(135deg, #5ab881, #00A97F);
     color: white;
     font-size: 20px;
     padding: 15px; 
@@ -564,7 +588,7 @@
 .table-stats {
     width: 100%;
     border-collapse: collapse;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .tr-stats {
@@ -594,11 +618,11 @@
 .ranking-title {
     font-size: 2.5rem; 
     margin-bottom: 2rem;
-    color: #3f865d;
+    color: #00A97F;
 }
 
 .rankings-table {
-    width: 90%; 
+    width: 75%; 
     border-collapse: collapse;
     margin-top: 2rem;
     border-radius: 12px;
@@ -607,11 +631,11 @@
 }
 
 .rankings-header th {
-    background-color: #3f865d;
+    background-color: #00A97F;
     color: white;
-    padding: 1rem;
+    padding: 0.3rem;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     vertical-align: middle;
     border-bottom: 2px solid #fff;
     border-right: 1px solid white;
@@ -622,17 +646,58 @@
 }
 
 .rankings-data td {
-    border: 1px solid #cecece;
-    padding: 0.8rem; 
-    text-align: center;
-    font-size: 1.4rem; 
     position: relative;
+    border: 1px solid #cecece;
+    padding: 0.3rem;
+    text-align: center;
+    font-size: 1.2rem; 
+    transition: background-color 0.3s ease;
+}
+
+.rankings-data td:nth-child(1) {
+    width: 10%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rankings-data td:nth-child(2) {
+    width: 20%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rankings-data td:nth-child(3) {
+    width: 15%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rankings-data td:nth-child(4) {
+    width: 15%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rankings-data td:nth-child(5),
+.rankings-data td:nth-child(6) {
+    width: 15%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rankings-data tr:nth-child(1) td,
+.rankings-data tr:nth-child(2) td,
+.rankings-data tr:nth-child(3) td {
     background-color: #f7f7f7;
 }
 
-.rankings-data tr:not(.top-rank) td {
+.rankings-data tr:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) td {
     background: linear-gradient(rgba(247, 247, 247, 0.8), rgba(247, 247, 247, 1)); 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .rankings-data tr.top-rank td {
@@ -659,9 +724,6 @@
     background: linear-gradient(to top left, rgba(205, 127, 50, 0.5), transparent);
 }
 
-.rankings-data tr:not(.top-rank) td {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
 .cup-icon {
     position: absolute;
@@ -672,45 +734,93 @@
     z-index: 2;
 }
 
-.btn-profile,
-.btn-contract {
-    background-color: #1b5332;
-    color: white;
-    border: none;
-    padding: 8px 16px; 
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.4rem; 
-    transition: all 0.3s ease;
+.button {
+    --color: #00A97F;
+    padding: 0.5em 1em;
+    background-color: whitesmoke;
+    border-radius: .3em;
     position: relative;
-    z-index: 3;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    font-weight: 400;
+    font-size: 17px;
+    border: 1px solid;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: var(--color);
+    z-index: 2;
 }
 
-.btn-profile:hover,
-.btn-contract:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+.button::before, 
+.button::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--color);
+    transition: 1s ease;
 }
 
-.btn-profile:focus,
-.btn-contract:focus {
-    outline: none;
+.button::before {
+    top: -1em;
+    left: -1em;
 }
 
-/* CSS de Profile*/
-
-.profile-container {
-    font-family: 'Exo 2', sans-serif;
-    min-height: 100vh;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+.button::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
 }
 
-.profile-title {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 40px;
-    color: #3f865d; 
+.button:hover::before, 
+.button:hover::after {
+    height: 410px;
+    width: 410px;
+}
+
+.button:hover {
+    color: rgb(10, 25, 30);
+    background-color: rgba(0, 169, 127, 0.2); 
+}
+
+.button:active {
+    filter: brightness(.8);
+}
+
+.button-pag {
+    padding: 0.4rem 0.7rem;
+    background-color: #00A97F;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-pag:hover {
+    background-color: #007F5F;
+}
+
+.span-pag {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.link-user {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.link-user:hover {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /* CSS de Footer */
@@ -764,4 +874,64 @@
 .logo-footer-div{
     padding-left: 9rem;
 
+}
+
+/* CSS de About*/
+
+.about {
+    margin: 0 auto;
+    font-family: 'Exo 2', sans-serif;
+    min-height: 100vh;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to bottom, #ffffff, #a5a5a5); 
+}
+
+.about-title {
+    font-size: 2.5rem; 
+    margin-bottom: 2rem;
+    color: #00A97F;
+}
+
+/* CSS de Profile*/
+
+.profile {
+    margin: 0 auto;
+    font-family: 'Exo 2', sans-serif;
+    min-height: 100vh;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to bottom, #ffffff, #a5a5a5); 
+}
+
+.profile-title {
+    font-size: 2.5rem; 
+    margin-bottom: 2rem;
+    color: #00A97F;
+}
+
+/* CSS de User*/
+
+.user {
+    margin: 0 auto;
+    font-family: 'Exo 2', sans-serif;
+    min-height: 100vh;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to bottom, #ffffff, #a5a5a5); 
+}
+
+.user-title {
+    font-size: 2.5rem; 
+    margin-bottom: 2rem;
+    color: #00A97F;
 }

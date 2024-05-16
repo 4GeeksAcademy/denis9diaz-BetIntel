@@ -2,13 +2,14 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faListAlt, faClock, faCalculator, faChartLine, faPercentage, faMoneyBillWave, faDollarSign, faMoneyCheckAlt, faStream, faCheckCircle, faTachometerAlt, faHandHoldingUsd, faTrophy, faUserFriends, faCheck } from '@fortawesome/free-solid-svg-icons';
 import fondosection from '/src/front/img/fondo-section.png'
+import titulo from '/src/front/img/titulo.png'
 
 const SeccionIntroduccion = () => {
     return (
         <div className="introduction-section">
             <section className="home-header">
                 <div className="container-intro">
-                    <h1 className="home-title">Plataforma estadística de apuestas deportivas</h1>
+                    <img src={titulo} alt="misApuestas" className="image-title" />
                     <p className="home-subtitle">Lleva un control exhaustivo de tus apuestas y mejora tus resultados con nuestras herramientas</p>
                 </div>
             </section>
@@ -16,28 +17,28 @@ const SeccionIntroduccion = () => {
                 <div className="container">
                     <div className="intro-section">
                         <div className="intro-section-left" style={{
-                            position: 'relative', 
+                            position: 'relative',
                             padding: '3rem',
                             minHeight: "30vh",
-                            borderRadius: '10px', 
-                            backgroundImage: `url(${fondosection})`, 
+                            borderRadius: '10px',
+                            backgroundImage: `url(${fondosection})`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                         }}>
                             <h2 className="what-title">¿Qué puedes hacer aquí?</h2>
                             <h5 className="what-subtitle">Contratar pronosticadores</h5>
                             <ul className="introduction-list">
-                                <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Accede al Ranking</span></li>
+                                <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Accede al Ranking de pronosticadores</span></li>
                                 <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Busca el pronosticador que más te guste</span></li>
                                 <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Accede a sus estadísticas detalladas</span></li>
                                 <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Contrata sus servicios y ganad dinero juntos</span></li>
                             </ul>
                             <h5 className="what-subtitle-2">Como pronosticador</h5>
                             <ul className="introduction-list">
-                                <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Crear y gestionar pronósticos de manera eficiente</span></li>
-                                <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Acceder a una lista detallada de tus apuestas</span></li>
-                                <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Acceder a todas tus estadísticas</span></li>
-                                <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Competir por ser el mejor pronosticador</span></li>
+                                <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Crea y gestiona pronósticos de manera eficiente</span></li>
+                                <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Accede a una lista detallada de tus apuestas</span></li>
+                                <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Accede a todas tus estadísticas</span></li>
+                                <li><FontAwesomeIcon className="icon" icon={faCheck} /><span className="what-item">Compite por ser el mejor pronosticador</span></li>
                             </ul>
                         </div>
                         <div className="intro-section-right" style={{

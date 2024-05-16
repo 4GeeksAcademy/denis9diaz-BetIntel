@@ -10,12 +10,12 @@ const Footer = () => (
                 </div>
                 <div className="col-md-3">
                     <h4>Quienes somos</h4>
-                    <p>Descubre más acerca de nuestra empresa</p>
+                    <p>Descubre más acerca de nuestro propósito</p>
                     <Link to="/about" className="about-us">Sobre nosotros</Link>
                 </div>
                 <div className="col-md-3">
                     <h4>Contacto</h4>
-                    <p><i className="fas fa-map-marker-alt"></i> 123 Calle Principal, Ciudad</p>
+                    <p><i className="fas fa-map-marker-alt"></i> 123 Calle, Ciudad, País</p>
                     <p><i className="fas fa-envelope"></i> info@betintel.com</p>
                     <p><i className="fas fa-phone-alt"></i> +1234567890</p>
                 </div>

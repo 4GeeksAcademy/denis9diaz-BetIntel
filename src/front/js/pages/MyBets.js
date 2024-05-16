@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const MyBets = () => {
     const [userBets, setUserBets] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [betsPerPage] = useState(10);
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
 
@@ -13,33 +15,31 @@ const MyBets = () => {
             navigate("/login");
         } else {
             actions.getMyTasks();
+            fetchUserBets();
         }
     }, [navigate, actions]);
 
-    useEffect(() => {
-        const fetchUserBets = async () => {
-            try {
-                const token = localStorage.getItem("jwt-token");
-                const response = await fetch(`${process.env.BACKEND_URL}/api/bets/user`, {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-                if (response.ok) {
-                    const bets = await response.json();
-                    setUserBets(bets);
-                } else {
-                    const errorData = await response.json();
-                    console.error("Error al obtener las apuestas del usuario:", errorData.msg);
+    const fetchUserBets = async () => {
+        try {
+            const token = localStorage.getItem("jwt-token");
+            const response = await fetch(`${process.env.BACKEND_URL}/api/bets/user`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
                 }
-            } catch (error) {
-                console.error("Error en la solicitud fetch:", error);
+            });
+            if (response.ok) {
+                let bets = await response.json();
+                bets.sort((a, b) => new Date(b.event_date) - new Date(a.event_date));
+                setUserBets(bets);
+            } else {
+                const errorData = await response.json();
+                console.error("Error al obtener las apuestas del usuario:", errorData.msg);
             }
-        };
-
-        fetchUserBets();
-    }, []);
+        } catch (error) {
+            console.error("Error en la solicitud fetch:", error);
+        }
+    };
 
     const getResultClass = (resultado) => {
         switch (resultado) {
@@ -59,7 +59,9 @@ const MyBets = () => {
         return new Date(dateString).toLocaleDateString('es-ES', options);
     };
 
-    const sortedBets = [...userBets].sort((a, b) => new Date(a.event_date) - new Date(b.event_date));
+    const indexOfLastBet = currentPage * betsPerPage;
+    const indexOfFirstBet = indexOfLastBet - betsPerPage;
+    const currentBets = userBets.slice(indexOfFirstBet, indexOfLastBet);
 
     return (
         <div className="my-bet-container">
@@ -79,7 +81,7 @@ const MyBets = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {sortedBets.map(bet => (
+                    {currentBets.map(bet => (
                         <tr key={bet.id}>
                             <td>{formatDate(bet.event_date)}</td>
                             <td>{bet.event_name}</td>
@@ -94,9 +96,13 @@ const MyBets = () => {
                     ))}
                 </tbody>
             </table>
+            <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+                <button className="button-pag" onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>Anterior</button>
+                <span className="span-pag" style={{ margin: '0 1rem' }}>Página {currentPage}</span>
+                <button className="button-pag" onClick={() => setCurrentPage(currentPage + 1)} disabled={indexOfLastBet >= userBets.length}>Siguiente</button>
+            </div>
         </div>
     );
-    
 }
 
 export default MyBets;
