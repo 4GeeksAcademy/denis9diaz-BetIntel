@@ -323,14 +323,31 @@ def get_user_stats_by_id(user_id):
     if not user:
         return jsonify({'msg': "Usuario no encontrado"}), 404
 
+    bets = Apuestas.query.filter_by(user_id=user_id).all()
+
+    stats = calcular_estadisticas(bets)
+
     user_stats = EstadisticasUsuario.query.filter_by(user_id=user_id).first()
 
     if not user_stats:
-        return jsonify({'msg': "Estadísticas no encontradas"}), 404
-
-    stats = user_stats.serialize()
-
-    return jsonify({'stats': stats}), 200
+        user_stats = EstadisticasUsuario(
+            user_id=user.id,
+            money_bet=stats["money_bet"],
+            money_won=stats["money_won"],
+            profit=stats["profit"],
+            played_units=stats["played_units"],
+            profit_units=stats["profit_units"],
+            yield_percentage=stats["yield_percentage"],
+            total_bets=stats["total_bets"],
+            wins=stats["wins"],
+            losses=stats["losses"],
+            draws=stats["draws"],
+            success_rate=stats["success_rate"],
+            average_odds=stats["average_odds"],
+            average_stake=stats["average_stake"]
+        )
+    
+    return jsonify({'bets': [bet.serialize() for bet in bets], 'stats': stats, 'user_stats': user_stats.serialize()}), 200
 
 
 @app.route('/api/rankings', methods=['GET'])
