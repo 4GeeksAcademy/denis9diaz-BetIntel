@@ -255,6 +255,20 @@ def get_user_bets():
     return jsonify(bets_serialized), 200
 
 
+@app.route('/api/user/profile', methods=['GET'])
+@jwt_required()
+def get_user_profile():
+    current_user_email = get_jwt_identity()
+    user = User.query.filter_by(email=current_user_email).first()
+
+    if not user:
+        return jsonify({'msg': "Usuario no encontrado"}), 404
+
+    user_data = user.serialize()
+
+    return jsonify({'user': user_data}), 200
+
+
 @app.route('/api/stats/user', methods=['GET'])
 @jwt_required()
 def get_user_stats():
@@ -288,6 +302,35 @@ def get_user_stats():
     db.session.commit()
 
     return jsonify({'bets': [bet.serialize() for bet in bets], 'stats': stats}), 200
+
+
+@app.route('/api/user/<int:user_id>', methods=['GET'])
+def get_user_by_id(user_id):
+    user = User.query.get(user_id)
+    
+    if not user:
+        return jsonify({'msg': "Usuario no encontrado"}), 404
+
+    user_data = user.serialize()
+
+    return jsonify({'user': user_data}), 200
+
+
+@app.route('/api/stats/user/<int:user_id>', methods=['GET'])
+def get_user_stats_by_id(user_id):
+    user = User.query.get(user_id)
+    
+    if not user:
+        return jsonify({'msg': "Usuario no encontrado"}), 404
+
+    user_stats = EstadisticasUsuario.query.filter_by(user_id=user_id).first()
+
+    if not user_stats:
+        return jsonify({'msg': "Estadísticas no encontradas"}), 404
+
+    stats = user_stats.serialize()
+
+    return jsonify({'stats': stats}), 200
 
 
 @app.route('/api/rankings', methods=['GET'])

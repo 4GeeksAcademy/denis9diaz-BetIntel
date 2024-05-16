@@ -40,6 +40,8 @@ const Ranking = () => {
         setCurrentPage(prevPage => prevPage - 1);
     };
 
+    console.log("currentUsers:", currentUsers); 
+
     return (
         <div className="ranking ">
             <h1 className="ranking-title">Ranking de Pronosticadores</h1>
@@ -71,7 +73,7 @@ const Ranking = () => {
                                 </td>
                                 <td>{user.profit_units !== null ? parseFloat(user.profit_units).toFixed(2) : 'N/A'}</td>
                                 <td>{user.yield_percentage !== null ? parseFloat(user.yield_percentage).toFixed(2) + '%' : 'N/A'}</td>
-                                <td><button className="button"><Link to="/user" className="link-user">Ver más</Link></button></td>
+                                <td><button className="button"><Link to={`/user/${user.user_id}`} className="link-user">Ver más</Link></button></td>
                                 <td><button className="button">Contratar</button></td>
                             </tr>
                         );
